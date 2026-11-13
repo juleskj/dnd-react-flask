@@ -26,6 +26,7 @@ function App() {
         </div>
         <div>
           <h1>Get started</h1>
+          <h2 class="text-3xl font-bold underline">Hello world!</h2>
           <h2>
             the current time is {new Date(currentTime * 1000).toLocaleString()}
           </h2>
