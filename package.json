@@ -8,7 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "api": "cd api && venv\\Scripts\\flask run --debug"
+    "api": "cd api && venv\\Scripts\\flask run --debug",
+    "api:mac": "cd api && venv/bin/flask run --debug"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.5",
