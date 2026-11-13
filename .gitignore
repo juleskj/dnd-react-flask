@@ -24,9 +24,13 @@ package.json
 *.njsproj
 *.sln
 *.sw?
-.env
+
 
 # virtuel inviorment
 venv
 __pycache__
+
+
+# Environment files (real secrets stay local)
 .env
+!.env.example
