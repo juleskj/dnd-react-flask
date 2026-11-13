@@ -6,13 +6,13 @@ import "./App.css";
 
 function App() {
   const [count, setCount] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
+  const [currentTime, setCurrentTime] = useState("");
 
   useEffect(() => {
-    fetch("/api/time")
+    fetch("/api/user")
       .then((res) => res.json())
       .then((data) => {
-        setCurrentTime(data.time);
+        setCurrentTime(data.user);
       });
   }, []);
 
@@ -27,9 +27,7 @@ function App() {
         <div>
           <h1>Get started</h1>
           <h2 class="text-3xl font-bold underline">Hello world!</h2>
-          <h2>
-            the current time is {new Date(currentTime * 1000).toLocaleString()}
-          </h2>
+          <h2>the current time is {currentTime}</h2>
           <p>
             Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
           </p>
