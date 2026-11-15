@@ -49,35 +49,17 @@ export default function Navigation() {
 
   const scrollDirection = useScrollDirection();
 
-  // delay before closing product nav
-  let delay = 150;
-
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const timeoutRef = useRef<any>(null);
-
-  const open = useCallback(() => {
-    clearTimeout(timeoutRef.current);
-
-    setIsOpen(true);
-  }, []);
-
-  const scheduleClose = useCallback(() => {
-    clearTimeout(timeoutRef.current);
-
-    timeoutRef.current = setTimeout(() => setIsOpen(false), delay);
-  }, [delay]);
-
   return (
     <header
-      className={` scroll-${scrollDirection} ${isOpen ? "bg-dark-100! " : ""}   ${isHome ? "lg:fixed bg-dark-100 lg:bg-transparent" : " lg:sticky bg-dark-100  "}   flex items-center justify-between px-4 lg:px-16 py-4   lg:w-full   lg:top-0  lg:left-0  lg:z-10   `}
+      className={` scroll-${scrollDirection}  ${isHome ? " bg-main-200 lg:bg-transparent" : "  bg-main-200"} lg:fixed  flex items-center justify-between px-4 lg:px-16 py-4   lg:w-full   lg:top-0  lg:left-0  lg:z-10   `}
     >
       <a className="text-light-100 hover-scale " href="/">
         <img
           src="https://placehold.co/600x400"
           alt="Logo godwit systems"
-          height="150"
-          width="150"
-          className="  tv:h-[50] tv:w-auto"
+          height="60"
+          width="60"
+          className="tv:h-[50] tv:w-auto"
         />
       </a>
 
@@ -86,11 +68,7 @@ export default function Navigation() {
         <MobileNav isNavOpen={isNavOpen} handleClick={handleClick}></MobileNav>
 
         {/* desktop navigation */}
-        <DesktopNav
-          open={open}
-          isOpen={isOpen}
-          scheduleClose={scheduleClose}
-        ></DesktopNav>
+        <DesktopNav scrollDirection={scrollDirection}></DesktopNav>
       </nav>
     </header>
   );

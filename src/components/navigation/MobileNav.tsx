@@ -8,33 +8,33 @@ export default function MobileNav({
   handleClick: any;
 }) {
   return (
-    <section className="flex lg:hidden  bg-dark-200 ">
+    <section className="flex lg:hidden  bg-main-300 ">
       {/* burger menu button */}
       <button
         aria-label="Burger menu"
-        className="space-y-2 bg-dark-100"
+        className="space-y-2 bg-main-200"
         onClick={() => handleClick()}
       >
-        <span className="block h-0.5 w-8 bg-light-100 "></span>
-        <span className="block h-0.5 w-8 bg-light-100 "></span>
-        <span className="block h-0.5 w-8 bg-light-100 "></span>
+        <span className="block h-0.5 w-8 bg-main-400 "></span>
+        <span className="block h-0.5 w-8 bg-main-400 "></span>
+        <span className="block h-0.5 w-8 bg-main-400 "></span>
       </button>
 
       {/* menu open */}
       <div
         className={
           isNavOpen
-            ? "absolute w-full h-full top-0 left-0 bg-dark-200 z-10 overflow-scroll overscroll-none"
+            ? "absolute w-full h-full top-0 left-0 bg-main-300 z-10 overflow-scroll overscroll-none"
             : "hidden"
         }
       >
-        <section className=" flex justify-between items-center w-full bg-dark-100 p-4 ">
+        <section className=" flex justify-between items-start w-full bg-main-300 p-4 ">
           <a className="text-light-100 " href="/" onClick={() => handleClick()}>
             <img
               src="https://placehold.co/600x400"
               alt="Logo godwit systems"
-              height={100}
-              width={100}
+              height="60px"
+              width="60px"
             />
           </a>
           {/*close button */}
@@ -54,37 +54,31 @@ export default function MobileNav({
           </div>
         </section>
 
-        <ul className=" border-b-2 border-b-dark-100 p-4 w-full *:text-light-100  *:not-first:border-b-2 *:border-b-light-100 *:block *:py-4 ">
-          <li className="w-full">
-            <a
-              className="uppercase block w-full font-medium"
-              href="/contact"
-              onClick={() => handleClick()}
-            >
-              contact
+        <ul className=" *w-full *font-medium  *:first-letter:capitalize p-4 w-full *:text-light-100 *:block *:py-4 ">
+          <li className="w-full text-left">
+            <a href="/campaign" onClick={() => handleClick()}>
+              campaign
             </a>
           </li>
 
-          <li className="w-full">
-            <a
-              className="uppercase block w-full font-medium"
-              href="/news"
-              onClick={() => handleClick()}
-            >
-              news
+          <li className="w-full text-left">
+            <a href="/calendar" onClick={() => handleClick()}>
+              calendar
             </a>
           </li>
-          <li className="w-full">
-            <a
-              className="uppercase block w-full font-medium"
-              href="/company"
-              onClick={() => handleClick()}
-            >
-              company
+          <li className="w-full text-left">
+            <a href="/character" onClick={() => handleClick()}>
+              character
             </a>
           </li>
+          <li className="w-full text-left">
+            <a href="/wiki" onClick={() => handleClick()}>
+              wiki
+            </a>
+          </li>
+          {/* button here */}
+          <li>logo out</li>
         </ul>
-        <Footer colorScheme="dark"></Footer>
       </div>
     </section>
   );

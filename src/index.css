@@ -71,16 +71,23 @@ td {
   --breakpoint-3xl: 1440px;
   --breakpoint-tv: 2560px;
 
-  --color-accent-100: #d11538;
-  --color-accent-200: #650113;
-
   --color-dark-100: #171717;
   --color-dark-200: #272727;
   --color-dark-300: #515151;
 
-  --color-light-100: #f2f5f9;
+  --color-light-100: #f1f1f1;
   --color-light-200: #d6d6d6;
   --color-light-300: #6e6e73;
+
+  --color-main-100: #80cbc9;
+  --color-main-200: #86bdbb;
+  --color-main-300: #155352;
+  --color-main-400: #051414;
+
+  --color-accent-100: #ccbeec;
+  --color-accent-200: #9780cb;
+  --color-accent-300: #341c6a;
+  --color-accent-400: #13082e;
 
   --font-sans: "IBM Plex Sans", sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
@@ -170,15 +177,29 @@ header {
   transition:
     transform 0.3s ease-in,
     0.3s linear;
-
+  color: var(--color-light-100);
   &.scroll-down {
     transform: translateY(-100%);
-    background-color: var(--color-dark-100);
+    background-color: var(--color-main-200);
+    color: var(--color-main-400);
+    & a:hover {
+      color: var(--color-main-300);
+      text-decoration: underline;
+      text-decoration-color: currentColor;
+      text-underline-offset: 8px;
+    }
   }
 
   &.scroll-up {
     transform: translateY(0);
-    background-color: var(--color-dark-100);
+    background-color: var(--color-main-200);
+    color: var(--color-main-400);
+    & a:hover {
+      color: var(--color-main-300);
+      text-decoration: underline;
+      text-decoration-color: currentColor;
+      text-underline-offset: 8px;
+    }
   }
 }
 .hover-scale {
