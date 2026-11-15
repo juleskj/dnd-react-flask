@@ -20,7 +20,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div class="h-[2000px]">
       <NavigationWrapper></NavigationWrapper>
       <section id="center">
         <div className="hero">
@@ -28,6 +28,7 @@ function App() {
           <img src={reactLogo} className="framework" alt="React logo" />
           <img src={viteLogo} className="vite" alt="Vite logo" />
         </div>
+
         <div>
           <h1>Get started</h1>
           <h2 class="text-3xl font-bold underline">Hello world!</h2>
@@ -134,7 +135,7 @@ function App() {
 
       <div className="ticks"></div>
       <section id="spacer"></section>
-    </>
+    </div>
   );
 }
 

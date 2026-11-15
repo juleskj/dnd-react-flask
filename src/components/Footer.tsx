@@ -4,7 +4,7 @@ const colorSchemes = {
     border: "border-light-200",
   },
   dark: {
-    backGround: "bg-dark-200 text-light-200",
+    backGround: "bg-main-200 text-light-200",
     border: "border-light-300",
   },
 } as const;
