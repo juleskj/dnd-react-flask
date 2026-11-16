@@ -1,3 +1,4 @@
+@import "tailwindcss";
 :root {
   --text: #6b6375;
   --text-h: #08060d;
@@ -11,8 +12,8 @@
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
   font: 18px/145% var(--sans);
@@ -28,6 +29,68 @@
   @media (max-width: 1024px) {
     font-size: 16px;
   }
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+/* costum responsive fonts for tv screen */
+
+h1 {
+  @apply text-4xl sm:text-5xl md:text-6xl tv:text-9xl!;
+  font-family: var(--font-space-grotesk);
+}
+
+h2 {
+  @apply text-4xl sm:text-4xl md:text-5xl  tv:text-8xl! font-mono;
+}
+h2.small {
+  @apply text-3xl lg:text-4xl tv:text-5xl!;
+}
+h2.xsmall {
+  @apply text-2xl 2xl:text-3xl tv:text-4xl!;
+}
+
+h3 {
+  @apply text-lg 2xl:text-3xl tv:text-4xl! font-mono;
+}
+
+p,
+a,
+button,
+input,
+label,
+th,
+td {
+  @apply text-base font-sans  tv:text-3xl!;
+}
+
+@theme {
+  --breakpoint-3xl: 1440px;
+  --breakpoint-tv: 2560px;
+
+  --color-dark-100: #171717;
+  --color-dark-200: #272727;
+  --color-dark-300: #515151;
+
+  --color-light-100: #f1f1f1;
+  --color-light-200: #d6d6d6;
+  --color-light-300: #6e6e73;
+
+  --color-main-100: #80cbc9;
+  --color-main-200: #86bdbb;
+  --color-main-300: #155352;
+  --color-main-400: #051414;
+
+  --color-accent-100: #ccbeec;
+  --color-accent-200: #9780cb;
+  --color-accent-300: #341c6a;
+  --color-accent-400: #13082e;
+
+  --font-sans: "IBM Plex Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -108,4 +171,37 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+
+header {
+  transition:
+    transform 0.3s ease-in,
+    0.3s linear;
+  color: var(--color-light-100);
+  &.scroll-down {
+    transform: translateY(-100%);
+    background-color: var(--color-main-200);
+    color: var(--color-main-400);
+    & a:hover {
+      color: var(--color-main-300);
+      text-decoration: underline;
+      text-decoration-color: currentColor;
+      text-underline-offset: 8px;
+    }
+  }
+
+  &.scroll-up {
+    transform: translateY(0);
+    background-color: var(--color-main-200);
+    color: var(--color-main-400);
+    & a:hover {
+      color: var(--color-main-300);
+      text-decoration: underline;
+      text-decoration-color: currentColor;
+      text-underline-offset: 8px;
+    }
+  }
+}
+.hover-scale {
+  @apply hover:scale-110 transition-all;
 }
