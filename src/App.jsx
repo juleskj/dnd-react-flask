@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import heroImg from "./assets/hero.png";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "./assets/vite.svg";
+import AddButton from "./components/AddButton";
 import "./App.css";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <h1>Get started</h1>
           <h2 class="text-3xl font-bold underline">Hello world!</h2>
           <h2>the current time is {currentTime}</h2>
+          <AddButton></AddButton>
           <p>
             Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
           </p>
