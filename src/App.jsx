@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import LoginForm from "./components/LoginForm";
+import InputField from "./components/InputField";
 import heroImg from "./assets/hero.png";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "./assets/vite.svg";
@@ -31,6 +33,10 @@ function App() {
           <p>
             Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
           </p>
+          <LoginForm buttonText="Login" formTitle="Login">
+            <InputField iDhtmlFor="email" inputName="email" labelText="Email"/>
+            <InputField iDhtmlFor="password" inputName="password" labelText="Password" required={true} inputRequirements="min 8 characters and max 20"/>
+          </LoginForm>
         </div>
         <button
           type="button"
