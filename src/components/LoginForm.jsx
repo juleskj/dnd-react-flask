@@ -1,70 +1,74 @@
 import { useState } from "react";
 import Toast from "./Toast";
+import Button from "./Button";
+
 export default function LoginForm({ children, formTitle, buttonText, formMethod = "POST", successHeader, successMessage, api }) {
-    const [showToast, setShowToast] = useState(false);
-    const [toast, setToast] = useState({
+  const [showToast, setShowToast] = useState(false);
+  const [toast, setToast] = useState({
     state: "success",
     toastHeader: successHeader,
-    toastMessage: successMessage})
+    toastMessage: successMessage,
+  });
 
-    const handleShow = () => {
-        setShowToast(true);
+  const handleShow = () => {
+    setShowToast(true);
 
-        setTimeout(() => {
-            setShowToast(false);
-        }, 5000);
-    };
+    setTimeout(() => {
+      setShowToast(false);
+    }, 5000);
+  };
 
-    async function handleSubmit(e) {
-        e.preventDefault();
-        const form = e.target;
-        const formData = new FormData(form);
-        
-        const formValues = {};
-        formData.forEach((value, key) => {
-            formValues[key] = value ;
-        });
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
 
-        try {
-            // const response = await fetch(`/api/${api}`, {
-            // method: formMethod,
-            // headers: {
-            //   "Content-Type": "application/json",
-            // },
-            // body: JSON.stringify(formValues),
-            // });
+    const formValues = {};
+    formData.forEach((value, key) => {
+      formValues[key] = value;
+    });
 
-            // if (!response.ok) {
-            //   throw new Error("Failed to send email");
-            // }
+    try {
+      // const response = await fetch(`/api/${api}`, {
+      // method: formMethod,
+      // headers: {
+      //   "Content-Type": "application/json",
+      // },
+      // body: JSON.stringify(formValues),
+      // });
 
-            // const data = await response.json();
+      // if (!response.ok) {
+      //   throw new Error("Failed to send email");
+      // }
 
-            setToast({
-                state: "success",
-                toastHeader: "Welcome",
-                toastMessage: "You have successfully logged in!",
-            });
+      // const data = await response.json();
 
-            form.reset();
-        } catch (error) {
+      setToast({
+        state: "success",
+        toastHeader: "Welcome",
+        toastMessage: "You have successfully logged in!",
+      });
 
-        setToast({
-          state: "error",
-          toastHeader: "Something went wrong",
-          toastMessage: "Failed to login. Please try again.",
-        });
-        }
+      form.reset();
+    } catch (error) {
+      setToast({
+        state: "error",
+        toastHeader: "Something went wrong",
+        toastMessage: "Failed to login. Please try again.",
+      });
+    }
 
-        handleShow();
-    };
+    handleShow();
+  }
 
-    return <section>
-        <Toast state={toast.state} toastMessage={toast.toastMessage && toast.toastMessage} toastHeader={toast.toastHeader} showToast={showToast}></Toast>
-        <h1 className="text-6xl text-light-100 text-left font-heading">{formTitle}</h1>
-        <form action="" className="grid gap-y-4 text-left" onSubmit={handleSubmit} method={formMethod}>
-            {children}
-            <button type="submit" className="w-52 bg-main-100 text-main-400 h-10 rounded-3xl m-auto cursor-pointer">{buttonText}</button>
-        </form>
+  return (
+    <section>
+      <Toast state={toast.state} toastMessage={toast.toastMessage && toast.toastMessage} toastHeader={toast.toastHeader} showToast={showToast}></Toast>
+      <h1 className="text-6xl text-light-100 text-left font-heading">{formTitle}</h1>
+      <form action="" className="grid gap-y-4 text-left" onSubmit={handleSubmit} method={formMethod}>
+        {children}
+        <Button buttonText="Login" buttonType />
+      </form>
     </section>
+  );
 }
