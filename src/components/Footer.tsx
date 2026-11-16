@@ -1,4 +1,5 @@
-import { wizardSVG } from "../assets/wizard.svg";
+import wizardSVG from "../assets/wizard.svg";
+import DnDPlannerText from "../assets/dnd-planner.svg";
 const colorSchemes = {
   light: {
     backGround: "bg-light-100 bg-main-400",
@@ -12,9 +13,10 @@ const colorSchemes = {
 
 export default function Footer({ colorScheme = "light" }: { colorScheme?: keyof typeof colorSchemes }) {
   return (
-    <footer className={`${colorSchemes[colorScheme].backGround} p-4 md:p-16 relative w-full h-80`}>
-      <div className="bg-light-100 w-1/2 rounded-b-4xl absolute">
-        <img src={wizardSVG} alt="" />
+    <footer className={`${colorSchemes[colorScheme].backGround} relative w-full h-80 flex justify-start items-start p-4 rounded-xl overflow-hidden gap-2 md:justify-around`}>
+      <img src={DnDPlannerText} alt="Wizard" className="w-40 sm:w-1/2" />
+      <div className="bg-light-100 w-64 h-64 rounded-full grid self-start -mt-12">
+        <img src={wizardSVG} alt="Wizard" className="ml-14 self-center w-2/3" />
       </div>
     </footer>
   );
