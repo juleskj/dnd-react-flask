@@ -3,9 +3,6 @@ import Footer from "../Footer";
 export default function MobileNav({
   isNavOpen,
   handleClick,
-}: {
-  isNavOpen: any;
-  handleClick: any;
 }) {
   return (
     <section className="flex lg:hidden  bg-main-300 ">
@@ -32,7 +29,7 @@ export default function MobileNav({
           <a className="text-light-100 " href="/" onClick={() => handleClick()}>
             <img
               src="https://placehold.co/600x400"
-              alt="Logo godwit systems"
+              alt="placeholder"
               height="60px"
               width="60px"
             />
@@ -77,7 +74,7 @@ export default function MobileNav({
             </a>
           </li>
           {/* button here */}
-          <li>logo out</li>
+          <li>logout</li>
         </ul>
       </div>
     </section>

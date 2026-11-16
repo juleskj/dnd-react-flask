@@ -1,22 +1,5 @@
 @import "tailwindcss";
 
-@theme {
-  --breakpoint-3xl: 1440px;
-  --breakpoint-tv: 2560px;
-
-  --color-accent-100: #CCBEEC;
-  --color-accent-200: #4B3874;
-
-  --color-primary-100: #F1F1F1;
-
-  --color-secondary-100: #80CBC9;
-  --color-secondary-200: #155352;
-  --color-secondary-300: #051414;
-
-  --font-sans: "IBM Plex Sans", sans-serif;
-  --font-mono: "IBM Plex Mono", monospace;
-}
-
 .counter {
   font-size: 16px;
   padding: 5px 10px;

@@ -36,9 +36,11 @@ function App() {
           <p>
             Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
           </p>
-          <LoginForm buttonText="Login" formTitle="Login">
+          <LoginForm buttonText="Login" formTitle="Login" me="cursor-pointer">
             <InputField iDhtmlFor="email" inputName="email" labelText="Email"/>
-            <InputField iDhtmlFor="password" inputName="password" labelText="Password" required={true} inputRequirements="min 8 characters and max 20"/>
+            <InputField iDhtmlFor="password" type="password" inputName="password" labelText="Password" required={true} inputRequirements="min 8 characters and max 20" maxlength={20} minlength={8}/>
+            <div className="text-light-100"><span className="flex gap-1"><p className="text-sm!">Don't have an account?</p> <a className="cursor-pointer text-sm!">Login</a></span>
+            <a className="cursor-pointer text-sm!">Forgot your password?</a></div>
           </LoginForm>
         </div>
         <button
