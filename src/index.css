@@ -40,7 +40,6 @@
 
 h1 {
   @apply text-4xl sm:text-5xl md:text-6xl tv:text-9xl!;
-  font-family: var(--font-space-grotesk);
 }
 
 h2 {
@@ -54,7 +53,7 @@ h2.xsmall {
 }
 
 h3 {
-  @apply text-lg 2xl:text-3xl tv:text-4xl! font-mono;
+  @apply text-lg 2xl:text-3xl tv:text-4xl!;
 }
 
 p,
@@ -89,8 +88,12 @@ td {
   --color-accent-300: #341c6a;
   --color-accent-400: #13082e;
 
+  --color-error-100: #A62628;
+  --color-errpr-200: #590B0C;
+
   --font-sans: "IBM Plex Sans", sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
+  --font-heading: "Fondamento", serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -131,7 +134,7 @@ body {
 
 h1,
 h2 {
-  font-family: var(--heading);
+  font-family: var(--font-heading);
   font-weight: 500;
   color: var(--text-h);
 }

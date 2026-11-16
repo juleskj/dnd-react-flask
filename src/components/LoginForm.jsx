@@ -1,10 +1,19 @@
 import { useState } from "react";
+import Toast from "./Toast";
 export default function LoginForm({ children, formTitle, buttonText, formMethod = "POST", successHeader, successMessage, api }) {
     const [showToast, setShowToast] = useState(false);
     const [toast, setToast] = useState({
     state: "success",
-    toastMessage: successHeader,
-    toastHeader: successMessage})
+    toastHeader: successHeader,
+    toastMessage: successMessage})
+
+    const handleShow = () => {
+        setShowToast(true);
+
+        setTimeout(() => {
+            setShowToast(false);
+        }, 5000);
+    };
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -17,24 +26,24 @@ export default function LoginForm({ children, formTitle, buttonText, formMethod 
         });
 
         try {
-            const response = await fetch(`/api/${api}`, {
-            method: formMethod,
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formValues),
-            });
+            // const response = await fetch(`/api/${api}`, {
+            // method: formMethod,
+            // headers: {
+            //   "Content-Type": "application/json",
+            // },
+            // body: JSON.stringify(formValues),
+            // });
 
-            if (!response.ok) {
-              throw new Error("Failed to send email");
-            }
+            // if (!response.ok) {
+            //   throw new Error("Failed to send email");
+            // }
 
-            const data = await response.json();
+            // const data = await response.json();
 
             setToast({
                 state: "success",
-                toastHeader: successHeader,
-                toastMessage: data.message,
+                toastHeader: "Welcome",
+                toastMessage: "You have successfully logged in!",
             });
 
             form.reset();
@@ -50,18 +59,12 @@ export default function LoginForm({ children, formTitle, buttonText, formMethod 
         handleShow();
     };
 
-    function handleShow () {
-        setShowToast(true);
-
-        setTimeout(() => {
-            setShowToast(false);
-        }, 5000);
-    };
     return <section>
-        <h1 className="text-6xl text-primary-100 text-left">{formTitle}</h1>
+        <Toast state={toast.state} toastMessage={toast.toastMessage && toast.toastMessage} toastHeader={toast.toastHeader} showToast={showToast}></Toast>
+        <h1 className="text-6xl text-light-100 text-left font-heading">{formTitle}</h1>
         <form action="" className="grid gap-y-4 text-left" onSubmit={handleSubmit} method={formMethod}>
             {children}
-            <button type="submit" className="w-52 bg-secondary-100 text-secondary-300 h-10 rounded-3xl m-auto">{buttonText}</button>
+            <button type="submit" className="w-52 bg-main-100 text-main-400 h-10 rounded-3xl m-auto cursor-pointer">{buttonText}</button>
         </form>
     </section>
 }
