@@ -1,14 +1,21 @@
 import MainLayout from "../../layouts/MainLayout";
-import AddButton from "../../components/AddButton";
+import { useRef } from "react";
+
 import { Link } from "react-router";
+import AddWikiBtn from "../../components/AddWikiBtn";
 
 function Wiki() {
+  const wikiContainer = useRef<HTMLElement>(null);
+
   return (
     <MainLayout headerTitle="The wikipedia" color="teal">
-      <AddButton btnText="Create new world"></AddButton>
-      <article>
+      <AddWikiBtn btnText="Create new world" refrence={wikiContainer} />
+
+      <article id="wiki-worlds" ref={wikiContainer}>
         <Link to="/Wiki/world-of-warcraft">
-          <h3>World of warcraft</h3>
+          <article>
+            <h3>world-of-warcraft</h3>
+          </article>
         </Link>
       </article>
     </MainLayout>

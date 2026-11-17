@@ -1,0 +1,123 @@
+import { RefObject, useState, useRef, useEffect } from "react";
+
+import AddButton from "./AddButton";
+import { Link } from "react-router";
+
+function AddWikiBtn({
+  btnText,
+  icon = "add",
+  color = "teal",
+  refrence,
+}: {
+  btnText: string;
+  icon?: "add" | "copy" | "downArror";
+  color?: "purple" | "teal";
+  refrence: RefObject<HTMLElement | null>;
+}) {
+  const colors = {
+    purple: "border-accent-300",
+    teal: "border-main-300",
+  };
+  const icons = {
+    add: "M352 128C352 110.3 337.7 96 320 96C302.3 96 288 110.3 288 128L288 288L128 288C110.3 288 96 302.3 96 320C96 337.7 110.3 352 128 352L288 352L288 512C288 529.7 302.3 544 320 544C337.7 544 352 529.7 352 512L352 352L512 352C529.7 352 544 337.7 544 320C544 302.3 529.7 288 512 288L352 288L352 128z",
+    copy: "M480 400L288 400C279.2 400 272 392.8 272 384L272 128C272 119.2 279.2 112 288 112L421.5 112C425.7 112 429.8 113.7 432.8 116.7L491.3 175.2C494.3 178.2 496 182.3 496 186.5L496 384C496 392.8 488.8 400 480 400zM288 448L480 448C515.3 448 544 419.3 544 384L544 186.5C544 169.5 537.3 153.2 525.3 141.2L466.7 82.7C454.7 70.7 438.5 64 421.5 64L288 64C252.7 64 224 92.7 224 128L224 384C224 419.3 252.7 448 288 448zM160 192C124.7 192 96 220.7 96 256L96 512C96 547.3 124.7 576 160 576L352 576C387.3 576 416 547.3 416 512L416 496L368 496L368 512C368 520.8 360.8 528 352 528L160 528C151.2 528 144 520.8 144 512L144 256C144 247.2 151.2 240 160 240L176 240L176 192L160 192z",
+    downArror:
+      "M297.4 470.6C309.9 483.1 330.2 483.1 342.7 470.6L534.7 278.6C547.2 266.1 547.2 245.8 534.7 233.3C522.2 220.8 501.9 220.8 489.4 233.3L320 402.7L150.6 233.4C138.1 220.9 117.8 220.9 105.3 233.4C92.8 245.9 92.8 266.2 105.3 278.7L297.3 470.7z",
+  };
+
+  // opens small menu that has an input
+
+  const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  // close menu when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  // handles the submit from the for man create an draft new world
+
+  const [title, setTitle] = useState("");
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    const trimmedTitle = title.trim();
+
+    if (!trimmedTitle || !refrence.current) return;
+
+    const link = document.createElement("a");
+    link.href = `/Wiki/${trimmedTitle.toLowerCase().replace(/\s+/g, "-")}`;
+
+    const article = document.createElement("article");
+    const heading = document.createElement("h3");
+
+    heading.textContent = trimmedTitle;
+
+    article.appendChild(heading);
+    link.appendChild(article);
+
+    refrence.current.appendChild(link);
+
+    setTitle("");
+    setIsOpen(false);
+  }
+
+  return (
+    <div ref={menuRef}>
+      <AddButton
+        btnText={btnText}
+        onClick={() => setIsOpen(true)}
+        aria-label="Open menu"
+        aria-expanded={isOpen}
+      ></AddButton>
+
+      {isOpen && (
+        <div className="mt-2 flex flex-row items-start gap-4 mr-2 z-50  w-full md:max-w-full lg:max-w-85 rounded-lg border-2 bg-light-100 p-3 shadow-lg">
+          <button
+            className=" cursor-pointer"
+            type="button"
+            onClick={() => setIsOpen(false)}
+            aria-label="Close menu"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 640 640"
+              className="w-5 h-5 text-dark-100"
+              aria-hidden="true"
+            >
+              <path
+                fill="currentColor"
+                d="M183.1 137.4C170.6 124.9 150.3 124.9 137.8 137.4C125.3 149.9 125.3 170.2 137.8 182.7L275.2 320L137.9 457.4C125.4 469.9 125.4 490.2 137.9 502.7C150.4 515.2 170.7 515.2 183.2 502.7L320.5 365.3L457.9 502.6C470.4 515.1 490.7 515.1 503.2 502.6C515.7 490.1 515.7 469.8 503.2 457.3L365.8 320L503.1 182.6C515.6 170.1 515.6 149.8 503.1 137.3C490.6 124.8 470.3 124.8 457.8 137.3L320.5 274.7L183.1 137.4z"
+              />
+            </svg>
+          </button>
+
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="wiki-title">Give your work a title</label>
+            <input
+              id="wiki-title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+            />
+
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default AddWikiBtn;
