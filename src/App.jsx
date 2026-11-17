@@ -9,7 +9,7 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="my-4 mx-4  lg:mx-32 lg:my-8">
+    <div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/wiki" element={<Wiki />} />

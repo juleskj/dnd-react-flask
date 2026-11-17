@@ -1,8 +1,10 @@
+import MainLayout from "../layouts/MainLayout";
+
 function Wiki() {
   return (
-    <div>
-      <h2>hello</h2>
-    </div>
+    <MainLayout headerTitle="Wiki" color="purple">
+      <p>hello</p>
+    </MainLayout>
   );
 }
 
