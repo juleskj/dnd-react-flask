@@ -20,7 +20,7 @@ function AddButton({
 
   return (
     <button
-      className={`border-2 ${colors[color]} flex items-center justify-between py-2 px-4   rounded-[10px] w-full md:max-w-full lg:max-w-85`}
+      className={`border-2 ${colors[color]} cursor-pointer flex items-center justify-between py-2 px-4   rounded-[10px] w-full md:max-w-full lg:max-w-85`}
     >
       {btnText}
       <svg
