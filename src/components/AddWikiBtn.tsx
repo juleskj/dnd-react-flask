@@ -1,4 +1,4 @@
-import { RefObject, useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 
 import AddButton from "./AddButton";
 import { Link } from "react-router";
@@ -7,12 +7,12 @@ function AddWikiBtn({
   btnText,
   icon = "add",
   color = "teal",
-  refrence,
+  onAdd,
 }: {
   btnText: string;
   icon?: "add" | "copy" | "downArror";
   color?: "purple" | "teal";
-  refrence: RefObject<HTMLElement | null>;
+  onAdd: (title: string) => void;
 }) {
   const colors = {
     purple: "border-accent-300",
@@ -53,22 +53,9 @@ function AddWikiBtn({
     e.preventDefault();
 
     const trimmedTitle = title.trim();
+    if (!trimmedTitle) return;
 
-    if (!trimmedTitle || !refrence.current) return;
-
-    const link = document.createElement("a");
-    link.href = `/Wiki/${trimmedTitle.toLowerCase().replace(/\s+/g, "-")}`;
-
-    const article = document.createElement("article");
-    const heading = document.createElement("h3");
-
-    heading.textContent = trimmedTitle;
-
-    article.appendChild(heading);
-    link.appendChild(article);
-
-    refrence.current.appendChild(link);
-
+    onAdd(trimmedTitle);
     setTitle("");
     setIsOpen(false);
   }
@@ -83,7 +70,7 @@ function AddWikiBtn({
       ></AddButton>
 
       {isOpen && (
-        <div className="mt-2 flex flex-row items-start gap-4 mr-2 z-50  w-full md:max-w-full lg:max-w-85 rounded-lg border-2 bg-light-100 p-3 shadow-lg">
+        <div className="mt-2 flex flex-row items-start gap-4 mr-2 z-50  w-full md:max-w-full lg:max-w-85 rounded-lg border-2 border-main-300 bg-light-100 p-3 shadow-lg">
           <button
             className=" cursor-pointer"
             type="button"
@@ -103,16 +90,24 @@ function AddWikiBtn({
             </svg>
           </button>
 
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="wiki-title">Give your work a title</label>
-            <input
-              id="wiki-title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              required
-            />
+          <form className="flex" onSubmit={handleSubmit}>
+            <div>
+              <label htmlFor="wiki-title">Give your work a title</label>
+              <input
+                className="border-2 border-main-300 rounded-full py-1 px-2"
+                id="wiki-title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+              />
+            </div>
 
-            <button type="submit">Submit</button>
+            <button
+              className="text-light-100 bg-main-300  p-2 rounded-[10px] w-fit cursor-pointer"
+              type="submit"
+            >
+              Submit
+            </button>
           </form>
         </div>
       )}
