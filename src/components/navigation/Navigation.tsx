@@ -51,7 +51,7 @@ export default function Navigation() {
 
   return (
     <header
-      className={` scroll-${scrollDirection}  ${isHome ? " bg-main-200 lg:bg-transparent" : "  bg-main-200"} lg:fixed  flex items-center justify-between px-4 lg:px-16 py-4   lg:w-full   lg:top-0  lg:left-0  lg:z-10   `}
+      className={` scroll-${scrollDirection}  ${isHome ? " bg-main-200 lg:bg-transparent" : "  bg-main-200"} lg:sticky  flex items-center justify-between px-4 lg:px-16 py-4   lg:w-full   lg:top-0  lg:left-0  lg:z-10   `}
     >
       <a className="text-light-100 hover-scale " href="/">
         <img
