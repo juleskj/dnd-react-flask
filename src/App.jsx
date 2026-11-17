@@ -3,6 +3,7 @@ import heroImg from "./assets/hero.png";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "./assets/vite.svg";
 import "./App.css";
+import AddButton from "./components/AddButton";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -28,6 +29,7 @@ function App() {
           <h1>Get started</h1>
           <h2 class="text-3xl font-bold underline">Hello world!</h2>
           <h2>the current time is {currentTime}</h2>
+          <AddButton btnText="hello"></AddButton>
           <p>
             Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
           </p>
