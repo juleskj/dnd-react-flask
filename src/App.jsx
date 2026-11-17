@@ -3,6 +3,7 @@ import heroImg from "./assets/hero.png";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "./assets/vite.svg";
 import "./App.css";
+import NavigationWrapper from "./components/navigation/NavigationWrapper";
 import AddButton from "./components/AddButton";
 
 function App() {
@@ -18,13 +19,15 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div class="h-[2000px]">
+      <NavigationWrapper></NavigationWrapper>
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
           <img src={reactLogo} className="framework" alt="React logo" />
           <img src={viteLogo} className="vite" alt="Vite logo" />
         </div>
+
         <div>
           <h1>Get started</h1>
           <h2 class="text-3xl font-bold underline">Hello world!</h2>
@@ -128,7 +131,7 @@ function App() {
 
       <div className="ticks"></div>
       <section id="spacer"></section>
-    </>
+    </div>
   );
 }
 
