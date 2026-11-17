@@ -84,8 +84,8 @@ td {
 
   --color-accent-100: #ccbeec;
   --color-accent-200: #9780cb;
-  --color-accent-300: #341c6a;
-  --color-accent-400: #13082e;
+  --color-accent-300: #4b3874;
+  --color-accent-400: #1a0a3d;
 
   --color-error-100: #a62628;
   --color-errpr-200: #590b0c;
@@ -150,7 +150,6 @@ h2 {
   font-size: 24px;
   line-height: 118%;
   letter-spacing: -0.24px;
-  margin: 0 0 8px;
   @media (max-width: 1024px) {
     font-size: 20px;
   }

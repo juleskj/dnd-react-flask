@@ -18,7 +18,7 @@ export default function CampaignCard({ campaignName, campaignLink }) {
       <h2 className="pt-2 text-2xl! sm:text-3xl! text-main-100!">{campaignName}</h2>
 
       <a href={campaignLink} className="flex gap-2 text-main-100 text-sm!">
-        Go to campaign
+        <p>Go to campaign</p>
         <img src={greenArrow} alt="arrow icon" className="w-8" />
       </a>
     </article>

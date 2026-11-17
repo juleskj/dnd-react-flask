@@ -6,7 +6,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "./assets/vite.svg";
 import "./App.css";
 import NavigationWrapper from "./components/navigation/NavigationWrapper";
-import CampaignCard from "./components/CampaignCard";
+import SessionCard from "./components/SessionCard";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -56,7 +56,7 @@ function App() {
               <a className="cursor-pointer text-sm!">Forgot your password?</a>
             </div>
           </LoginForm>
-          <CampaignCard campaignName="Kampagne 1" campaignLink="" />
+          <SessionCard sessionNumber="01" date="date" sessionLink="" />
         </div>
         <button type="button" className="counter" onClick={() => setCount((count) => count + 1)}>
           Count is {count}
