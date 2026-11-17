@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router";
 import Home from "./pages/Home";
 import Wiki from "./pages/Wiki";
-import Wiki from "./pages/Campaign";
-import Wiki from "./pages/Calender";
+import Campaign from "./pages/Campaign";
+import Calender from "./pages/Calender";
 
 import "./App.css";
 
