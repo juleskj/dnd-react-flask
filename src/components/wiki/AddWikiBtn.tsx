@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 
-import AddButton from "./AddButton";
+import AddButton from "../AddButton";
 import { Link } from "react-router";
 
 function AddWikiBtn({

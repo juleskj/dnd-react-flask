@@ -12,7 +12,7 @@ function WikiWorld({
   return (
     <Link
       key={id}
-      to={`/Wiki/${slug}`}
+      to={`/wiki/${slug}`}
       className="active:scale-[0.98] hover:scale-[1.02] duration-100 ease-in"
     >
       <article className="flex flex-row items-center justify-between  py-8 px-4 rounded-[10px] text-light-100 bg-main-400 w-full md:max-w-full lg:max-w-85">

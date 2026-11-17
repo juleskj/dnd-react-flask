@@ -1,8 +1,8 @@
 import MainLayout from "../../layouts/MainLayout";
 import { useState } from "react";
 
-import AddWikiBtn from "../../components/AddWikiBtn";
-import WikiWorld from "../../components/WikiWorld";
+import AddWikiBtn from "../../components/wiki/AddWikiBtn";
+import WikiWorld from "../../components/wiki/WikiWorld";
 
 type World = { id: string; worldTitle: string; slug: string };
 
