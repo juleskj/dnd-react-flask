@@ -5,7 +5,7 @@ import React, { useState, useEffect, useCallback, useRef } from "react";
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
 
-import { useLocation } from "react-router";
+import { useLocation, Link } from "react-router";
 
 export default function Navigation() {
   const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
@@ -53,7 +53,7 @@ export default function Navigation() {
     <header
       className={` scroll-${scrollDirection}  ${isHome ? " bg-main-200 lg:bg-transparent" : "  bg-main-200"} lg:sticky  flex items-center justify-between px-4 lg:px-16 py-4   lg:w-full   lg:top-0  lg:left-0  lg:z-10   `}
     >
-      <a className="text-light-100 hover-scale " href="/">
+      <Link className="text-light-100 hover-scale " to="/">
         <img
           src="https://placehold.co/600x400"
           alt="Logo godwit systems"
@@ -61,7 +61,7 @@ export default function Navigation() {
           width="60"
           className="tv:h-[50] tv:w-auto"
         />
-      </a>
+      </Link>
 
       <nav className="">
         {/* mobile navigation */}
