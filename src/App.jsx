@@ -6,6 +6,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "./assets/vite.svg";
 import "./App.css";
 import NavigationWrapper from "./components/navigation/NavigationWrapper";
+import CampaignCard from "./components/CampaignCard";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -37,17 +38,27 @@ function App() {
             Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
           </p>
           <LoginForm buttonText="Login" formTitle="Login" me="cursor-pointer">
-            <InputField iDhtmlFor="email" inputName="email" labelText="Email"/>
-            <InputField iDhtmlFor="password" type="password" inputName="password" labelText="Password" required={true} inputRequirements="min 8 characters and max 20" maxlength={20} minlength={8}/>
-            <div className="text-light-100"><span className="flex gap-1"><p className="text-sm!">Don't have an account?</p> <a className="cursor-pointer text-sm!">Login</a></span>
-            <a className="cursor-pointer text-sm!">Forgot your password?</a></div>
+            <InputField iDhtmlFor="email" inputName="email" labelText="Email" />
+            <InputField
+              iDhtmlFor="password"
+              type="password"
+              inputName="password"
+              labelText="Password"
+              required={true}
+              inputRequirements="min 8 characters and max 20"
+              maxlength={20}
+              minlength={8}
+            />
+            <div className="text-light-100">
+              <span className="flex gap-1">
+                <p className="text-sm!">Don't have an account?</p> <a className="cursor-pointer text-sm!">Login</a>
+              </span>
+              <a className="cursor-pointer text-sm!">Forgot your password?</a>
+            </div>
           </LoginForm>
+          <CampaignCard campaignName="Kampagne 1" campaignLink="" />
         </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
+        <button type="button" className="counter" onClick={() => setCount((count) => count + 1)}>
           Count is {count}
         </button>
       </section>
@@ -85,11 +96,7 @@ function App() {
           <ul>
             <li>
               <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
+                <svg className="button-icon" role="presentation" aria-hidden="true">
                   <use href="/icons.svg#github-icon"></use>
                 </svg>
                 GitHub
@@ -97,11 +104,7 @@ function App() {
             </li>
             <li>
               <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
+                <svg className="button-icon" role="presentation" aria-hidden="true">
                   <use href="/icons.svg#discord-icon"></use>
                 </svg>
                 Discord
@@ -109,11 +112,7 @@ function App() {
             </li>
             <li>
               <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
+                <svg className="button-icon" role="presentation" aria-hidden="true">
                   <use href="/icons.svg#x-icon"></use>
                 </svg>
                 X.com
@@ -121,11 +120,7 @@ function App() {
             </li>
             <li>
               <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
+                <svg className="button-icon" role="presentation" aria-hidden="true">
                   <use href="/icons.svg#bluesky-icon"></use>
                 </svg>
                 Bluesky
