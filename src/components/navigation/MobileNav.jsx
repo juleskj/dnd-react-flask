@@ -3,9 +3,6 @@ import { Link } from "react-router";
 export default function MobileNav({
   isNavOpen,
   handleClick,
-}: {
-  isNavOpen: any;
-  handleClick: any;
 }) {
   return (
     <section className="flex lg:hidden  bg-main-300 ">
@@ -36,7 +33,7 @@ export default function MobileNav({
           >
             <img
               src="https://placehold.co/600x400"
-              alt="Logo godwit systems"
+              alt="placeholder"
               height="60px"
               width="60px"
             />
@@ -81,7 +78,7 @@ export default function MobileNav({
             </Link>
           </li>
           {/* button here */}
-          <li>logo out</li>
+          <li>logout</li>
         </ul>
       </div>
     </section>

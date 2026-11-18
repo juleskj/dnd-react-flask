@@ -8,8 +8,8 @@ import MobileNav from "./MobileNav";
 import { useLocation, Link } from "react-router";
 
 export default function Navigation() {
-  const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
-  const [isHome, setIsHome] = useState<boolean>(false);
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [isHome, setIsHome] = useState(false);
 
   const location = useLocation();
 
@@ -56,7 +56,7 @@ export default function Navigation() {
       <Link className="text-light-100 hover-scale " to="/">
         <img
           src="https://placehold.co/600x400"
-          alt="Logo godwit systems"
+          alt="placeholder"
           height="60"
           width="60"
           className="tv:h-[50] tv:w-auto"
