@@ -1,22 +1,10 @@
-export default function InputField({
-  type = "text",
-  iDhtmlFor,
-  inputName,
-  labelText,
-  inputRequirements,
-  pattern,
-  required,
-  minlength,
-  maxlength,
-}) {
+export default function InputField({ type = "text", iDhtmlFor, inputName, labelText, inputRequirements, pattern, required, minlength, maxlength }) {
   return (
     <div className="grid gap-y-2">
-      <label htmlFor={iDhtmlFor} className="text-dark-100 text-xl!">
+      <label htmlFor={iDhtmlFor} className="text-light-100 text-xl!">
         {labelText}
       </label>
-      {inputRequirements && (
-        <p className="text-main-100 text-sm!">{inputRequirements}</p>
-      )}
+      {inputRequirements && <p className="text-main-100 text-sm!">{inputRequirements}</p>}
       <input
         type={type}
         id={iDhtmlFor}
