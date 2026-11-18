@@ -2,11 +2,12 @@ import LoginLayout from "../components/LoginLayout";
 import LoginForm from "../components/LoginForm";
 import InputField from "../components/InputField";
 import { Link } from "react-router";
+
 function Login() {
   return (
     <LoginLayout>
       <LoginForm buttonText="Login" formTitle="Login" me="cursor-pointer">
-        <InputField iDhtmlFor="email" inputName="email" labelText="Email" />
+        <InputField iDhtmlFor="email" inputName="email" labelText="Email" required={true} />
         <InputField
           iDhtmlFor="password"
           type="password"

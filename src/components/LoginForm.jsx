@@ -67,7 +67,7 @@ export default function LoginForm({ children, formTitle, buttonText, formMethod 
       <h1 className="text-6xl text-left font-heading text-light-100!">{formTitle}</h1>
       <form action="" className="grid gap-y-4 text-left" onSubmit={handleSubmit} method={formMethod}>
         {children}
-        <Button buttonText="Login" buttonType />
+        <Button buttonText={buttonText} buttonType />
       </form>
     </section>
   );
