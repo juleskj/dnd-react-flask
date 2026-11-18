@@ -6,6 +6,9 @@ import Calendar from "./pages/Calendar";
 import Character from "./pages/Character";
 import Login from "./pages/Login";
 import Signup from "./pages/Wiki";
+import ForgotPassword from "./pages/ForgotPassword";
+import NewPassword from "./pages/NewPassword";
+import Verification from "./pages/Verification";
 
 import "./App.css";
 
@@ -19,6 +22,9 @@ function App() {
       <Route path="/character" element={<Character />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/new-password" element={<NewPassword />} />
+      <Route path="/verify-account" element={<Verification />} />
     </Routes>
   );
 }
