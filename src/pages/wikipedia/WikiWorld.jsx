@@ -2,17 +2,15 @@ import MainLayout from "../../layouts/MainLayout";
 import { useParams } from "react-router";
 import WikiCategory from "../../components/wiki/WikiCategory";
 
-type Entry = { id: string; name: string; slug: string };
-
-function toSlug(title: string) {
+function toSlug(title) {
   return title.toLowerCase().replace(/\s+/g, "-");
 }
 
-function fromSlug(slug: string) {
+function fromSlug(slug) {
   return slug.replace(/-/g, " ").replace(/\b\w/g, (char) => char.toUpperCase());
 }
 
-function makeEntries(prefix: string, names: string[]): Entry[] {
+function makeEntries(prefix, names) {
   return names.map((name, i) => ({
     id: `${prefix}-${i + 1}`,
     name,
@@ -49,7 +47,7 @@ const LORE = makeEntries("lore", [
 ]);
 
 function WikiWorld() {
-  const { slug } = useParams<{ slug: string }>();
+  const { slug } = useParams();
   const worldSlug = slug ?? "";
 
   return (

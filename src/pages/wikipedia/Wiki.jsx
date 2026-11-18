@@ -4,10 +4,8 @@ import { useState } from "react";
 import AddWikiBtn from "../../components/wiki/AddWikiBtn";
 import WikiWorld from "../../components/wiki/WikiWorld";
 
-type World = { id: string; worldTitle: string; slug: string };
-
 function Wiki() {
-  const DRAFT_WORLDS: World[] = [
+  const DRAFT_WORLDS = [
     {
       id: "1",
       worldTitle: "Forgotten Realms",
@@ -26,14 +24,14 @@ function Wiki() {
     { id: "4", worldTitle: "Minecraft", slug: toSlug("Minecraft") },
   ];
 
-  const [worlds, setWorlds] = useState<World[]>(DRAFT_WORLDS);
+  const [worlds, setWorlds] = useState(DRAFT_WORLDS);
 
-  function toSlug(title: string) {
+  function toSlug(title) {
     return title.toLowerCase().replace(/\s+/g, "-");
   }
 
-  function addWorld(title: string) {
-    const newWorld: World = {
+  function addWorld(title) {
+    const newWorld = {
       id: crypto.randomUUID(),
       worldTitle: title,
       slug: title.toLowerCase().replace(/\s+/g, "-"),
