@@ -1,43 +1,45 @@
+import { Link } from "react-router";
+
 export default function DesktopNav({
   scrollDirection,
 }) {
   return (
     <div className="flex flex-row items-center gap-8">
       <ul
-        className={` scroll-${scrollDirection}   *:first-letter:capitalize hidden lg:flex justify-end gap-8`}
+        className={` scroll-${scrollDirection}    *:first-letter:capitalize hidden lg:flex justify-end gap-8`}
       >
         <li>
-          <a
-            className="font-medium hover:text-main-200 hover:underline-offset-8 hover:underline hover:decoration-current"
-            href="/campaign"
+          <Link
+            className="font-medium hover:text-main-300 hover:underline-offset-8 hover:underline hover:decoration-current"
+            to="/campaign"
           >
             campaign
-          </a>
+          </Link>
         </li>
 
         <li>
-          <a
-            className="font-medium hover:text-main-200 hover:underline-offset-8 hover:underline hover:decoration-current"
-            href="/calendar"
+          <Link
+            className="font-medium hover:text-main-300 hover:underline-offset-8 hover:underline hover:decoration-current"
+            to="/calendar"
           >
             calendar
-          </a>
+          </Link>
         </li>
         <li>
-          <a
-            className="font-medium hover:text-main-200 hover:underline-offset-8 hover:underline hover:decoration-current"
-            href="/character"
+          <Link
+            className="font-medium hover:text-main-300 hover:underline-offset-8 hover:underline hover:decoration-current"
+            to="/character"
           >
             character
-          </a>
+          </Link>
         </li>
         <li>
-          <a
-            className="font-medium hover:text-main-200 hover:underline-offset-8 hover:underline hover:decoration-current"
-            href="/wiki"
+          <Link
+            className="font-medium hover:text-main-300 hover:underline-offset-8 hover:underline hover:decoration-current"
+            to="/wiki"
           >
             wiki
-          </a>
+          </Link>
         </li>
         <li>logout</li>
       </ul>

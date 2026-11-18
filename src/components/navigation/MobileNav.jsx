@@ -1,4 +1,4 @@
-import Footer from "../Footer";
+import { Link } from "react-router";
 
 export default function MobileNav({
   isNavOpen,
@@ -26,14 +26,18 @@ export default function MobileNav({
         }
       >
         <section className=" flex justify-between items-start w-full bg-main-300 p-4 ">
-          <a className="text-light-100 " href="/" onClick={() => handleClick()}>
+          <Link
+            className="text-light-100 "
+            to="/"
+            onClick={() => handleClick()}
+          >
             <img
               src="https://placehold.co/600x400"
               alt="placeholder"
               height="60px"
               width="60px"
             />
-          </a>
+          </Link>
           {/*close button */}
           <div onClick={() => handleClick()}>
             <svg
@@ -53,25 +57,25 @@ export default function MobileNav({
 
         <ul className=" *w-full *font-medium  *:first-letter:capitalize p-4 w-full *:text-light-100 *:block *:py-4 ">
           <li className="w-full text-left">
-            <a href="/campaign" onClick={() => handleClick()}>
+            <Link to="/campaign" onClick={() => handleClick()}>
               campaign
-            </a>
+            </Link>
           </li>
 
           <li className="w-full text-left">
-            <a href="/calendar" onClick={() => handleClick()}>
+            <Link to="/calendar" onClick={() => handleClick()}>
               calendar
-            </a>
+            </Link>
           </li>
           <li className="w-full text-left">
-            <a href="/character" onClick={() => handleClick()}>
+            <Link to="/character" onClick={() => handleClick()}>
               character
-            </a>
+            </Link>
           </li>
           <li className="w-full text-left">
-            <a href="/wiki" onClick={() => handleClick()}>
+            <Link to="/wiki" onClick={() => handleClick()}>
               wiki
-            </a>
+            </Link>
           </li>
           {/* button here */}
           <li>logout</li>
