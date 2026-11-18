@@ -18,7 +18,7 @@ export default function Footer({ colorScheme = "light" }: { colorScheme?: keyof 
         <img src={DnDPlannerText} alt="Wizard" className="w-40 sm:w-md" />
         <div className="grid gap-4">
           <div className="bg-light-100 w-64 h-64 rounded-full grid self-start -mt-12 gap-14">
-            <img src={wizardSVG} alt="Wizard" className="ml-14 self-center w-2/3" />
+            <img src={wizardSVG} alt="Wizard" className="mx-auto self-center w-2/3" />
           </div>
           <button className="w-full bg-main-100 text-main-400 h-10 rounded-3xl m-auto cursor-pointer hidden sm:block">Logout</button>
         </div>
