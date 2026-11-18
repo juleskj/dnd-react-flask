@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
+import LoginForm from "./components/LoginForm";
+import InputField from "./components/InputField";
 import heroImg from "./assets/hero.png";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "./assets/vite.svg";
 import "./App.css";
 import NavigationWrapper from "./components/navigation/NavigationWrapper";
 import Footer from "./components/Footer";
+import SessionCard from "./components/SessionCard";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -24,7 +27,13 @@ function App() {
       <main>
         <section id="center">
           <div className="hero">
-            <img src={heroImg} className="base" width="170" height="179" alt="" />
+            <img
+              src={heroImg}
+              className="base"
+              width="170"
+              height="179"
+              alt=""
+            />
             <img src={reactLogo} className="framework" alt="React logo" />
             <img src={viteLogo} className="vite" alt="Vite logo" />
           </div>
@@ -36,8 +45,37 @@ function App() {
             <p>
               Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
             </p>
+            <LoginForm buttonText="Login" formTitle="Login" me="cursor-pointer">
+              <InputField
+                iDhtmlFor="email"
+                inputName="email"
+                labelText="Email"
+              />
+              <InputField
+                iDhtmlFor="password"
+                type="password"
+                inputName="password"
+                labelText="Password"
+                required={true}
+                inputRequirements="min 8 characters and max 20"
+                maxlength={20}
+                minlength={8}
+              />
+              <div className="text-light-100">
+                <span className="flex gap-1">
+                  <p className="text-sm!">Don't have an account?</p>{" "}
+                  <a className="cursor-pointer text-sm!">Login</a>
+                </span>
+                <a className="cursor-pointer text-sm!">Forgot your password?</a>
+              </div>
+            </LoginForm>
+            <SessionCard sessionNumber="01" date="date" sessionLink="" />
           </div>
-          <button type="button" className="counter" onClick={() => setCount((count) => count + 1)}>
+          <button
+            type="button"
+            className="counter"
+            onClick={() => setCount((count) => count + 1)}
+          >
             Count is {count}
           </button>
         </section>
@@ -75,7 +113,11 @@ function App() {
             <ul>
               <li>
                 <a href="https://github.com/vitejs/vite" target="_blank">
-                  <svg className="button-icon" role="presentation" aria-hidden="true">
+                  <svg
+                    className="button-icon"
+                    role="presentation"
+                    aria-hidden="true"
+                  >
                     <use href="/icons.svg#github-icon"></use>
                   </svg>
                   GitHub
@@ -83,7 +125,11 @@ function App() {
               </li>
               <li>
                 <a href="https://chat.vite.dev/" target="_blank">
-                  <svg className="button-icon" role="presentation" aria-hidden="true">
+                  <svg
+                    className="button-icon"
+                    role="presentation"
+                    aria-hidden="true"
+                  >
                     <use href="/icons.svg#discord-icon"></use>
                   </svg>
                   Discord
@@ -91,7 +137,11 @@ function App() {
               </li>
               <li>
                 <a href="https://x.com/vite_js" target="_blank">
-                  <svg className="button-icon" role="presentation" aria-hidden="true">
+                  <svg
+                    className="button-icon"
+                    role="presentation"
+                    aria-hidden="true"
+                  >
                     <use href="/icons.svg#x-icon"></use>
                   </svg>
                   X.com
@@ -99,7 +149,11 @@ function App() {
               </li>
               <li>
                 <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                  <svg className="button-icon" role="presentation" aria-hidden="true">
+                  <svg
+                    className="button-icon"
+                    role="presentation"
+                    aria-hidden="true"
+                  >
                     <use href="/icons.svg#bluesky-icon"></use>
                   </svg>
                   Bluesky
