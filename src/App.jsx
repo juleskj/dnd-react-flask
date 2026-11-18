@@ -5,7 +5,7 @@ import Campaign from "./pages/Campaign";
 import Calendar from "./pages/Calendar";
 import Character from "./pages/Character";
 import Login from "./pages/Login";
-import Signup from "./pages/Wiki";
+import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/ForgotPassword";
 import NewPassword from "./pages/NewPassword";
 import Verification from "./pages/Verification";
