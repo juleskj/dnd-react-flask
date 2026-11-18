@@ -5,7 +5,7 @@ import { Link } from "react-router";
 function Login() {
   return (
     <LoginLayout>
-      <LoginForm buttonText="Login" formTitle="Login" me="cursor-pointer">
+      <LoginForm buttonText="Login" formTitle="Login">
         <InputField iDhtmlFor="email" inputName="email" labelText="Email" />
         <InputField
           iDhtmlFor="password"
