@@ -90,6 +90,9 @@ td {
   --color-error-100: #a62628;
   --color-errpr-200: #590b0c;
 
+  --color-error-100: #A62628;
+  --color-errpr-200: #590B0C;
+
   --font-sans: "IBM Plex Sans", sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
   --font-heading: "Fondamento", serif;
