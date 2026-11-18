@@ -2,7 +2,15 @@ import { useState } from "react";
 import Toast from "./Toast";
 import Button from "./Button";
 
-export default function LoginForm({ children, formTitle, buttonText, formMethod = "POST", successHeader, successMessage, api }) {
+export default function LoginForm({
+  children,
+  formTitle,
+  buttonText,
+  formMethod = "POST",
+  successHeader,
+  successMessage,
+  api,
+}) {
   const [showToast, setShowToast] = useState(false);
   const [toast, setToast] = useState({
     state: "success",
@@ -63,9 +71,21 @@ export default function LoginForm({ children, formTitle, buttonText, formMethod 
 
   return (
     <section>
-      <Toast state={toast.state} toastMessage={toast.toastMessage && toast.toastMessage} toastHeader={toast.toastHeader} showToast={showToast}></Toast>
-      <h1 className="text-6xl text-light-100 text-left font-heading">{formTitle}</h1>
-      <form action="" className="grid gap-y-4 text-left" onSubmit={handleSubmit} method={formMethod}>
+      <Toast
+        state={toast.state}
+        toastMessage={toast.toastMessage && toast.toastMessage}
+        toastHeader={toast.toastHeader}
+        showToast={showToast}
+      ></Toast>
+      <h1 className="text-6xl text-dark-100 text-left font-heading">
+        {formTitle}
+      </h1>
+      <form
+        action=""
+        className="grid gap-y-4 text-left"
+        onSubmit={handleSubmit}
+        method={formMethod}
+      >
         {children}
         <Button buttonText="Login" buttonType />
       </form>
