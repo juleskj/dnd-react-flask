@@ -1,7 +1,5 @@
 export default function DesktopNav({
   scrollDirection,
-}: {
-  scrollDirection: any;
 }) {
   return (
     <div className="flex flex-row items-center gap-8">
@@ -41,7 +39,7 @@ export default function DesktopNav({
             wiki
           </a>
         </li>
-        <li>logo out</li>
+        <li>logout</li>
       </ul>
     </div>
   );

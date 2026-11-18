@@ -7,12 +7,10 @@ const colorSchemes = {
     backGround: "bg-main-200 text-light-200",
     border: "border-light-300",
   },
-} as const;
+};
 
 export default function Footer({
   colorScheme = "light",
-}: {
-  colorScheme?: keyof typeof colorSchemes;
 }) {
   return (
     <footer
