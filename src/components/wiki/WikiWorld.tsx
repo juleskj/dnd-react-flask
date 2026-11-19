@@ -15,7 +15,7 @@ function WikiWorld({
       to={`/wiki/${slug}`}
       className="active:scale-[0.98] hover:scale-[1.02] duration-100 ease-in"
     >
-      <article className="flex flex-row items-center justify-between  py-8 px-4 rounded-[10px] text-light-100 bg-main-400 w-full md:max-w-full lg:max-w-85">
+      <article className="flex flex-row items-center justify-between  py-8 px-4 rounded-[10px] text-light-100 bg-main-400 w-full md:max-w-full ">
         <h3 className="first-letter:capitalize">{worldTitle}</h3>
         <svg
           xmlns="http://www.w3.org/2000/svg"

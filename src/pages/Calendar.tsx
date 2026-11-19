@@ -1,8 +1,10 @@
+import MainLayout from "../layouts/MainLayout";
+
 function Calendar() {
   return (
-    <div>
+    <MainLayout headerTitle="hello Calendar" color="teal">
       <h2>hello Calendar</h2>
-    </div>
+    </MainLayout>
   );
 }
 

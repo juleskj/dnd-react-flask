@@ -11,7 +11,7 @@ import "./App.css";
 
 function App() {
   return (
-    <div>
+    <>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/wiki" element={<Wiki />} />
@@ -21,7 +21,7 @@ function App() {
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/character" element={<Character />} />
       </Routes>
-    </div>
+    </>
   );
 }
 

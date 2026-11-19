@@ -1,8 +1,10 @@
+import MainLayout from "../layouts/MainLayout";
+
 function Character() {
   return (
-    <div>
+    <MainLayout headerTitle="hello Character" color="teal">
       <h2>hello Character</h2>
-    </div>
+    </MainLayout>
   );
 }
 

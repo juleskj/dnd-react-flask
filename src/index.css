@@ -143,3 +143,14 @@ header {
 .hover-scale {
   @apply hover:scale-110 transition-all;
 }
+
+#root {
+  min-height: 100vh; /* or 100dvh for mobile browsers */
+  display: flex;
+  flex-direction: column;
+}
+
+#main-content {
+  /* the orange-outlined div */
+  flex: 1; /* takes all remaining space */
+}
