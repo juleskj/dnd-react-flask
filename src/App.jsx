@@ -12,6 +12,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import NewPassword from "./pages/NewPassword";
 import Verification from "./pages/Verification";
 import SingleCampaign from "./pages/campaigns/SingleCampaign";
+import SessionEntry from "./pages/sessions/SessionEntry";
 import "./App.css";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
       <Route path="/wiki/:slug/:entry" element={<WikiEntry />} />
       <Route path="/campaigns" element={<Campaigns />} />
       <Route path="/campaigns/:slug" element={<SingleCampaign />} />
+      <Route path="/sessions/:slug" element={<SessionEntry />} />
       <Route path="/calendar" element={<Calendar />} />
       <Route path="/character" element={<Character />} />
 
