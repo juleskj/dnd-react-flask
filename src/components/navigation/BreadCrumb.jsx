@@ -2,7 +2,7 @@
 import { Link, useLocation } from "react-router";
 import fromSlug from "../../utils/FromSlug";
 
-export default function Breadcrumbs() {
+export default function Breadcrumb() {
   const { pathname } = useLocation();
   const parts = pathname.split("/").filter(Boolean);
 

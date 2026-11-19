@@ -1,6 +1,6 @@
 import MainLayout from "../../layouts/MainLayout";
 import { useState } from "react";
-import Breadcrumbs from "../components/Breadcrumbs";
+import Breadcrumb from "../../components/navigation/BreadCrumb";
 import AddWikiBtn from "../../components/wiki/AddWikiBtn";
 import WikiWorld from "../../components/wiki/WikiWorld";
 import toSlug from "../../utils/ToSlug";
@@ -39,7 +39,7 @@ function Wiki() {
 
   return (
     <MainLayout headerTitle="The wikipedia" color="teal">
-      <Breadcrumbs></Breadcrumbs>
+      <Breadcrumb></Breadcrumb>
       <AddWikiBtn btnText="Create new world" onAdd={addWorld} />
       <section
         id="wiki-worlds"

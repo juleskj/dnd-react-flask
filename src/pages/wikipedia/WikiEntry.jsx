@@ -1,9 +1,12 @@
 import MainLayout from "../../layouts/MainLayout";
-import Breadcrumbs from "../../components/navigation/BreadCrumb";
+import Breadcrumb from "../../components/navigation/BreadCrumb";
 import { useParams, Link } from "react-router";
 import EditButton from "../../components/EditButton";
 import ContextLink from "../../components/wiki/ContextLink";
 import fromSlug from "../../utils/FromSlug";
+
+import useScrollDirection from "../../utils/UseScrollDirection";
+import AddButton from "../../components/AddButton";
 
 function WikiEntry() {
   const { entry, slug } = useParams();
@@ -11,10 +14,16 @@ function WikiEntry() {
   const worldSlug = slug ?? "";
   const worldEntry = entry ?? "";
 
+  const scrollDirection = useScrollDirection();
+
   return (
-    <MainLayout headerTitle={fromSlug(worldEntry)} color="teal" css="">
-      <Breadcrumbs></Breadcrumbs>
-      <section className="flex flex-col gap-2 [&_p]:max-w-[65ch]  items-start">
+    <MainLayout
+      headerTitle={fromSlug(worldEntry)}
+      color="teal"
+      css="lg:grid lg:grid-cols-2 lg:items-start lg:gap-16 md:gap-8 "
+    >
+      <section className="flex flex-col gap-2 [&_p]:max-w-[65ch]  items-start relative mb-8 mb:mb-0 lg:mb-0">
+        <Breadcrumb></Breadcrumb>
         <EditButton></EditButton>
         <img
           src="https://placehold.co/600x400"
@@ -28,7 +37,7 @@ function WikiEntry() {
           cumque eveniet?
         </p>
 
-        <section className="[&_span]:inline-block [&_span]:first-letter:uppercase [&_span]:text-xl [&_p]:underline ">
+        <section className=" [&_span]:inline-block [&_span]:first-letter:uppercase [&_span]:text-xl [&_p]:underline ">
           <h2>list</h2>
           <ul>
             <li>
@@ -76,7 +85,24 @@ function WikiEntry() {
         </p>
       </section>
 
-      <section>
+      <section
+        className={`sticky md:grid md:grid-cols-2 lg:grid lg:grid-cols-2 flex flex-col gap-2   [transition:transform_0.3s_ease-in,0.3s_linear]  ${scrollDirection === "down" ? "top-5" : "top-25"}`}
+      >
+        <AddButton
+          css="col-span-2 lg:min-w-full"
+          btnText="add context"
+        ></AddButton>
+
+        <ContextLink
+          categori="npc"
+          worldSlug={worldSlug}
+          contextSlug="the-jailer"
+        ></ContextLink>
+        <ContextLink
+          categori="npc"
+          worldSlug={worldSlug}
+          contextSlug="the-jailer"
+        ></ContextLink>
         <ContextLink
           categori="npc"
           worldSlug={worldSlug}

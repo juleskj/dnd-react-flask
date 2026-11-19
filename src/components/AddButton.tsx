@@ -2,11 +2,13 @@ function AddButton({
   btnText,
   icon = "add",
   color = "teal",
+  css,
   ...props
 }: {
   btnText: string;
   icon?: "add" | "copy" | "downArror";
   color?: "purple" | "teal";
+  css?: string;
 } & React.ComponentPropsWithoutRef<"button">) {
   const colors = {
     purple: "border-accent-300",
@@ -21,7 +23,7 @@ function AddButton({
 
   return (
     <button
-      className={`active:scale-[0.98] hover:scale-[1.02] duration-100 ease-in  border-2 ${colors[color]} cursor-pointer flex items-center justify-between py-2 px-4   rounded-[10px] w-full md:max-w-full lg:max-w-85`}
+      className={`${css} hover-scale  border-2 ${colors[color]} cursor-pointer flex items-center justify-between py-2 px-4   rounded-[10px] w-full md:max-w-full lg:max-w-85`}
       {...props}
     >
       {btnText}

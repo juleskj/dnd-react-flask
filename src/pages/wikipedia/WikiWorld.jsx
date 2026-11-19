@@ -1,7 +1,7 @@
 import MainLayout from "../../layouts/MainLayout";
 import { useParams } from "react-router";
 import WikiCategory from "../../components/wiki/WikiCategory";
-import Breadcrumbs from "../../components/navigation/BreadCrumb";
+import Breadcrumb from "../../components/navigation/BreadCrumb";
 import fromSlug from "../../utils/FromSlug";
 import toSlug from "../../utils/ToSlug";
 
@@ -51,7 +51,7 @@ function WikiWorld() {
       color="teal"
       css="flex flex-col gap-2 *:max-w-125"
     >
-      <Breadcrumbs></Breadcrumbs>
+      <Breadcrumb></Breadcrumb>
       <WikiCategory title="NPC" worldSlug={worldSlug} entries={NPCS} />
       <WikiCategory
         title="Locations"

@@ -3,7 +3,7 @@ import fromSlug from "../../utils/FromSlug";
 
 function ContextLink({ categori, worldSlug, contextSlug }) {
   return (
-    <article className="flex flex-col justify-between  bg-main-100  px-4 py-2 rounded-[10px] aspect-square w-full lg:w-45 h-auto ">
+    <article className="hover-scale flex flex-col justify-between  bg-main-100  px-4 py-2 rounded-[10px]  w-full  h-auto ">
       <div>
         <p className="first-letter:capitalize">{categori}</p>
         <Link
