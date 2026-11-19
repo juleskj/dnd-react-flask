@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Wiki from "./pages/wikipedia/Wiki";
 import WikiWorld from "./pages/wikipedia/WikiWorld";
 import WikiEntry from "./pages/wikipedia/WikiEntry";
+import WikiCreateEntry from "./pages/wikipedia/WikiCreateEntry";
 import Campaign from "./pages/Campaign";
 import Calendar from "./pages/Calendar";
 import Character from "./pages/Character";
@@ -17,19 +18,19 @@ import "./App.css";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      {/* wiki pages */}
       <Route path="/wiki" element={<Wiki />} />
       <Route path="/wiki/:slug" element={<WikiWorld />} />
+      <Route path="/wiki/:slug/new-entry" element={<WikiCreateEntry />} />
       <Route path="/wiki/:slug/:entry" element={<WikiEntry />} />
+
+      {/* main navigation pages */}
+      <Route path="/" element={<Home />} />
       <Route path="/campaign" element={<Campaign />} />
       <Route path="/calendar" element={<Calendar />} />
       <Route path="/character" element={<Character />} />
 
-      <Route path="/" element={<Home />} />
-      <Route path="/wiki" element={<Wiki />} />
-      <Route path="/campaign" element={<Campaign />} />
-      <Route path="/calendar" element={<Calendar />} />
-      <Route path="/character" element={<Character />} />
+      {/* sing up and login pages */}
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
