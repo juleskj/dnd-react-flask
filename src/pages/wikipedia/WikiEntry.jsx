@@ -1,6 +1,8 @@
 import MainLayout from "../../layouts/MainLayout";
 import Breadcrumbs from "../../components/navigation/BreadCrumb";
-import { useParams } from "react-router";
+import { useParams, Link } from "react-router";
+import EditButton from "../../components/EditButton";
+import ContextLink from "../../components/wiki/ContextLink";
 
 function fromEntry(entry) {
   return entry
@@ -10,12 +12,16 @@ function fromEntry(entry) {
 
 function WikiEntry() {
   const { entry } = useParams();
+  const { slug } = useParams();
+
+  const worldSlug = slug ?? "";
   const worldEntry = entry ?? "";
 
   return (
     <MainLayout headerTitle={fromEntry(worldEntry)} color="teal" css="">
       <Breadcrumbs></Breadcrumbs>
       <section className="flex flex-col gap-2 [&_p]:max-w-[65ch]  items-start">
+        <EditButton></EditButton>
         <img
           src="https://placehold.co/600x400"
           alt=""
@@ -74,6 +80,14 @@ function WikiEntry() {
           voluptas dolorum mollitia quis quae natus quia, officia aspernatur
           cumque eveniet?
         </p>
+      </section>
+
+      <section>
+        <ContextLink
+          categori="npc"
+          worldSlug={worldSlug}
+          contextSlug="the-jailer"
+        ></ContextLink>
       </section>
     </MainLayout>
   );
