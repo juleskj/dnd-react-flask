@@ -1,16 +1,13 @@
 import greenBanner from "../assets/green-banner-bg-2.svg";
-import campaignCard from "../assets/campaign-card.svg";
 import greenArrow from "../assets/green-arrow.svg";
-import useWindowDimensions from "./useScreenSize";
 import { Link } from "react-router";
 
 export default function CampaignCard({ campaignName, id, slug }) {
-  const { isMobile } = useWindowDimensions();
   return (
     <Link key={id} to={`/campaigns/${slug}`} className="active:scale-[0.98] hover:scale-[1.02] duration-100 ease-in">
       <article
         style={{
-          backgroundImage: `url("${isMobile ? greenBanner : campaignCard}")`,
+          backgroundImage: `url("${greenBanner}")`,
           backgroundSize: "100% auto",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
