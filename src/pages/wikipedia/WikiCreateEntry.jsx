@@ -21,7 +21,8 @@ function WikiCreateEntry() {
       <section className="flex flex-col gap-2 [&_p]:max-w-[65ch]  items-start relative mb-8 mb:mb-0 lg:mb-0">
         <Breadcrumb></Breadcrumb>
 
-        <UploadImg></UploadImg>
+        <UploadImg imgId="1"></UploadImg>
+        <UploadImg imgId="2"></UploadImg>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum
           dignissimos non minus ipsa magnam, nesciunt earum dolore aliquam, a
