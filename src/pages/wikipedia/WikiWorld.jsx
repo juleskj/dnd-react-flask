@@ -1,6 +1,7 @@
 import MainLayout from "../../layouts/MainLayout";
 import { useParams } from "react-router";
 import WikiCategory from "../../components/wiki/WikiCategory";
+import Breadcrumbs from "../../components/navigation/BreadCrumb";
 
 function toSlug(title) {
   return title.toLowerCase().replace(/\s+/g, "-");
@@ -56,6 +57,7 @@ function WikiWorld() {
       color="teal"
       css="flex flex-col gap-2 *:max-w-125"
     >
+      <Breadcrumbs></Breadcrumbs>
       <WikiCategory title="NPC" worldSlug={worldSlug} entries={NPCS} />
       <WikiCategory
         title="Locations"
