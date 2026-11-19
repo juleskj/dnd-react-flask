@@ -38,7 +38,7 @@ function Campaigns() {
   return (
     <MainLayout headerTitle="Campaigns" color="teal">
       <AddWikiBtn btnText="Create new campaign" onAdd={addCampaign} />
-      <section className="grid md:grid-cols-2 gap-y-2 2xl:gap-y-8 gap-x-8 my-8">
+      <section className="grid md:grid-cols-2 gap-y-4 gap-x-8 my-8">
         {campaigns.map((campaign) => (
           <CampaignCard key={campaign.id} id={campaign.id} campaignName={campaign.worldTitle} slug={campaign.slug} />
         ))}

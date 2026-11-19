@@ -12,7 +12,7 @@ export default function CampaignCard({ campaignName, id, slug }) {
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
-        className="flex justify-between w-full lg:h-40 h-28 items-center px-4 sm:px-5"
+        className="flex justify-between w-full h-32 items-center px-4 sm:px-5"
       >
         <h2 className="pt-2 text-xl! lg:text-2xl! text-main-100!">{campaignName}</h2>
 
