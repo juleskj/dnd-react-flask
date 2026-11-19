@@ -13,9 +13,9 @@ export default function SessionCard({ isUpcoming, sessionNumber, date, sessionLi
             <p className={`text-sm! pb-2 ${variant === "small" && "order-2"} ${isUpcoming ? "text-accent-400" : "text-light-100"}`}>
               {isUpcoming ? "next session" : "played session"}
             </p>
-            <h2 className={`font-sans!  ${variant === "small" ? "order-3 text-3xl!" : "text-4xl!"} ${isUpcoming ? "text-accent-400!" : "text-accent-100!"}`}>{sessionNumber}</h2>
+            <h2 className={`font-sans!  ${variant === "small" ? "order-3 text-2xl!" : "text-3xl!"} ${isUpcoming ? "text-accent-400!" : "text-accent-100!"}`}>{sessionNumber}</h2>
 
-            <h2 className={`font-sans! ${variant === "small" ? "order-4 text-3xl!" : "text-4xl"} ${isUpcoming ? "text-accent-300" : "text-light-100"}`}>session</h2>
+            <h2 className={`font-sans! ${variant === "small" ? "order-4 text-2xl!" : "text-3xl"} ${isUpcoming ? "text-accent-300" : "text-light-100"}`}>session</h2>
             <p className={`text-sm! py-4 sm:py-7 ${variant === "small" && "order-1 py-0! sm:py-0!"} ${isUpcoming ? "text-accent-400" : "text-light-100"}`}>{date}</p>
           </div>
           {variant === "default" && <p className="bg-light-100 h-36 sm:h-64 p-2.5 rounded-xl text-accent-400 text-sm!">{sessionNote}</p>}

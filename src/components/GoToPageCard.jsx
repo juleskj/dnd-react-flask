@@ -8,7 +8,7 @@ export default function GoToPageCard({ link, cardTitle, additionalText, isAWikiL
         <div className="flex">
           <div>
             {additionalText && <p className="text-sm! pb-2 text-light-100">{additionalText}</p>}
-            <h2 className="font-sans! text-3xl! text-light-100">{cardTitle}</h2>
+            <h2 className="font-sans! text-2xl! text-light-100">{cardTitle}</h2>
           </div>
           <div className="flex justify-end items-center gap-2 pt-3 grow">
             <p className="text-sm! ">see session</p>
