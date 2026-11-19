@@ -4,6 +4,7 @@ import WikiCategory from "../../components/wiki/WikiCategory";
 import Breadcrumb from "../../components/navigation/BreadCrumb";
 import fromSlug from "../../utils/FromSlug";
 import toSlug from "../../utils/ToSlug";
+import AddButton from "../../components/AddButton";
 
 function makeEntries(prefix, names) {
   return names.map((name, i) => ({
@@ -49,9 +50,10 @@ function WikiWorld() {
     <MainLayout
       headerTitle={fromSlug(worldSlug)}
       color="teal"
-      css="flex flex-col gap-2 *:max-w-125"
+      css="flex flex-col gap-8 lg:*:max-w-[40vw]"
     >
       <Breadcrumb></Breadcrumb>
+      <AddButton btnText="add new content" css=""></AddButton>
       <WikiCategory title="NPC" worldSlug={worldSlug} entries={NPCS} />
       <WikiCategory
         title="Locations"

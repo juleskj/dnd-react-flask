@@ -63,6 +63,8 @@ function AddWikiBtn({
   return (
     <div ref={menuRef}>
       <AddButton
+        icon={icon}
+        color={color}
         btnText={btnText}
         onClick={() => setIsOpen(true)}
         aria-label="Open menu"

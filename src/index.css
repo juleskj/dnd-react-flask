@@ -142,7 +142,7 @@ header {
 }
 
 .hover-scale {
-  @apply active:scale-[0.98] hover:scale-[1.02] duration-100 ease-in;
+  @apply cursor-pointer active:scale-[0.98] hover:scale-[1.02] duration-100 ease-in;
 }
 
 #root {
