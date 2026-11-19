@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import fromSlug from "../../utils/FromSlug";
 import SessionCard from "../../components/SessionCard";
 import toSlug from "../../utils/ToSlug";
+import GoToPageCard from "../../components/GoToPageCard";
 
 function SingleCampaign() {
   const { slug } = useParams();
@@ -30,11 +31,15 @@ function SingleCampaign() {
   ];
   return (
     <MainLayout headerTitle={fromSlug(campaignSlug)} color="teal">
-      <section className="grid sm:grid-cols-2">
+      <section className="grid sm:grid-cols-2 gap-8">
         <div className="grid gap-4">
           {sessions.map((session) => (
             <SessionCard key={session.id} sessionNumber={session.sessionNumber} slug={session.slug} date={session.date} variant="small" />
           ))}
+        </div>
+        <div>
+          <GoToPageCard cardTitle="See all active characters" link={"/character"} />
+          <GoToPageCard cardTitle="Forgotten Realms" link={"Forgotten Realms"} isAWikiLink additionalText="Go to wiki" />
         </div>
       </section>
     </MainLayout>
