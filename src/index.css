@@ -88,7 +88,6 @@ h1,
 h2 {
   font-family: var(--font-heading);
   font-weight: 500;
-  color: var(--text-h);
 }
 
 h1 {
@@ -141,6 +140,18 @@ header {
     }
   }
 }
+
 .hover-scale {
-  @apply hover:scale-110 transition-all;
+  @apply cursor-pointer active:scale-[0.98] hover:scale-[1.02] duration-100 ease-in;
+}
+
+#root {
+  min-height: 100vh; /* or 100dvh for mobile browsers */
+  display: flex;
+  flex-direction: column;
+}
+
+#main-content {
+  /* the orange-outlined div */
+  flex: 1; /* takes all remaining space */
 }

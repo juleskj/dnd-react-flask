@@ -5,6 +5,7 @@ import EditButton from "../components/EditButton";
 import LoginForm from "../components/LoginForm";
 import InputField from "../components/InputField";
 import SessionCard from "../components/SessionCard";
+import MainLayout from "../layouts/MainLayout";
 
 function Home() {
   const [count, setCount] = useState(0);
@@ -19,7 +20,7 @@ function Home() {
   }, []);
 
   return (
-    <div className="my-4 mx-4  lg:mx-32 lg:my-8">
+    <MainLayout css="my-4 mx-4  lg:mx-32 lg:my-8">
       <section>
         <section id="center">
           <LoginForm buttonText="Login" formTitle="Login" me="cursor-pointer">
@@ -81,7 +82,7 @@ function Home() {
           <SessionCard sessionNumber="01" date="date" sessionLink="" />
         </div>
       </section>
-    </div>
+    </MainLayout>
   );
 }
 

@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect } from "react";
 
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
-
+import useScrollDirection from "../../utils/UseScrollDirection";
 import { useLocation, Link } from "react-router";
 
 export default function Navigation() {
@@ -20,32 +20,6 @@ export default function Navigation() {
   useEffect(() => {
     setIsHome(location.pathname === "/");
   }, [location.pathname]);
-
-  const useScrollDirection = () => {
-    const [scrollDirection, setScrollDirection] = useState("");
-    const [prevOffset, setPrevOffset] = useState(0);
-
-    const toggleScrollDirection = () => {
-      let scrollY = window.scrollY;
-      if (scrollY > prevOffset && scrollY > 50) {
-        setScrollDirection("down");
-      } else if (scrollY < prevOffset && scrollY > 50) {
-        setScrollDirection("up");
-      } else {
-        setScrollDirection("");
-      }
-      setPrevOffset(scrollY);
-    };
-
-    useEffect(() => {
-      window.addEventListener("scroll", toggleScrollDirection);
-      return () => {
-        window.removeEventListener("scroll", toggleScrollDirection);
-      };
-    });
-
-    return scrollDirection;
-  };
 
   const scrollDirection = useScrollDirection();
 

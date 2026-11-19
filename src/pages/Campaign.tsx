@@ -1,8 +1,10 @@
+import MainLayout from "../layouts/MainLayout";
+
 function Campaign() {
   return (
-    <div>
+    <MainLayout headerTitle="hello Campaign" color="teal">
       <h2>hello Campaign</h2>
-    </div>
+    </MainLayout>
   );
 }
 
