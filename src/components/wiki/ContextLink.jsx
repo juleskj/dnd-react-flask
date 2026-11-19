@@ -1,8 +1,5 @@
 import { Link } from "react-router";
-
-function fromSlug(slug) {
-  return slug.replace(/-/g, " ").replace(/\b\w/g, (char) => char.toUpperCase());
-}
+import fromSlug from "../../utils/FromSlug";
 
 function ContextLink({ categori, worldSlug, contextSlug }) {
   return (

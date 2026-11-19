@@ -2,14 +2,8 @@ import MainLayout from "../../layouts/MainLayout";
 import { useParams } from "react-router";
 import WikiCategory from "../../components/wiki/WikiCategory";
 import Breadcrumbs from "../../components/navigation/BreadCrumb";
-
-function toSlug(title) {
-  return title.toLowerCase().replace(/\s+/g, "-");
-}
-
-function fromSlug(slug) {
-  return slug.replace(/-/g, " ").replace(/\b\w/g, (char) => char.toUpperCase());
-}
+import fromSlug from "../../utils/FromSlug";
+import toSlug from "../../utils/ToSlug";
 
 function makeEntries(prefix, names) {
   return names.map((name, i) => ({

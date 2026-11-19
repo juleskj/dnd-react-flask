@@ -3,6 +3,7 @@ import { useState } from "react";
 import Breadcrumbs from "../components/Breadcrumbs";
 import AddWikiBtn from "../../components/wiki/AddWikiBtn";
 import WikiWorld from "../../components/wiki/WikiWorld";
+import toSlug from "../../utils/ToSlug";
 
 function Wiki() {
   const DRAFT_WORLDS = [
@@ -25,10 +26,6 @@ function Wiki() {
   ];
 
   const [worlds, setWorlds] = useState(DRAFT_WORLDS);
-
-  function toSlug(title) {
-    return title.toLowerCase().replace(/\s+/g, "-");
-  }
 
   function addWorld(title) {
     const newWorld = {

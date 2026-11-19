@@ -3,22 +3,16 @@ import Breadcrumbs from "../../components/navigation/BreadCrumb";
 import { useParams, Link } from "react-router";
 import EditButton from "../../components/EditButton";
 import ContextLink from "../../components/wiki/ContextLink";
-
-function fromEntry(entry) {
-  return entry
-    .replace(/-/g, " ")
-    .replace(/\b\w/g, (char) => char.toUpperCase());
-}
+import fromSlug from "../../utils/FromSlug";
 
 function WikiEntry() {
-  const { entry } = useParams();
-  const { slug } = useParams();
+  const { entry, slug } = useParams();
 
   const worldSlug = slug ?? "";
   const worldEntry = entry ?? "";
 
   return (
-    <MainLayout headerTitle={fromEntry(worldEntry)} color="teal" css="">
+    <MainLayout headerTitle={fromSlug(worldEntry)} color="teal" css="">
       <Breadcrumbs></Breadcrumbs>
       <section className="flex flex-col gap-2 [&_p]:max-w-[65ch]  items-start">
         <EditButton></EditButton>
