@@ -7,8 +7,10 @@ import AddButton from "../../components/AddButton";
 import SessionCard from "../../components/SessionCard";
 import NextIcon from "../../assets/next-icon.svg";
 import PrevIcon from "../../assets/prev-icon.svg";
+import useWindowDimensions from "../../utils/useScreenSize";
 
 function SessionsView() {
+  const { isDesktop } = useWindowDimensions();
   const { slug } = useParams();
 
   const sessionSlug = slug ?? "";
@@ -47,7 +49,7 @@ function SessionsView() {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const visibleCards = 4;
+  const visibleCards = !isDesktop ? 2 : 4;
   const maxIndex = Math.max(0, sessions.length - visibleCards);
 
   function prevSlide() {
@@ -63,7 +65,7 @@ function SessionsView() {
       <div className="flex justify-center">
         <AddButton btnText="plan new session" />
       </div>
-      <div className="flex justify-end mb-4">
+      <div className="justify-end mb-4 hidden sm:flex sm:mt-4 xl:mt-0">
         <div className="flex gap-2">
           <img src={PrevIcon} alt="back arrow" className="cursor-pointer" onClick={prevSlide} />
           <img src={NextIcon} alt="forward arrow" className="cursor-pointer" onClick={nextSlide} />
@@ -71,7 +73,7 @@ function SessionsView() {
       </div>
       <div className="overflow-hidden p-3">
         <div
-          className="grid grid-flow-col w-full  auto-cols-[calc((100%-3rem)/4)] gap-4 transition-transform duration-300 ease-in-out"
+          className="grid sm:grid-flow-col w-full  sm:auto-cols-[calc((100%-3rem)/2)] md:auto-cols-[calc((100%-3rem)/3)] lg:auto-cols-[calc((100%-3rem)/4)] gap-4 transition-transform duration-300 ease-in-out"
           style={{
             transform: `translateX(calc(-${currentIndex * 25}% - ${currentIndex * 0.25}rem))`,
           }}
