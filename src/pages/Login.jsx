@@ -2,6 +2,7 @@ import LoginLayout from "../components/LoginLayout";
 import LoginForm from "../components/LoginForm";
 import InputField from "../components/InputField";
 import { Link } from "react-router";
+
 function Login() {
   return (
     <LoginLayout>
@@ -18,7 +19,7 @@ function Login() {
           minlength={8}
         />
         <span className="flex gap-1 text-light-100">
-          <p className="text-sm!">Don't have an account?</p>{" "}
+          <p className="text-sm!">Don't have an account?</p>
           <Link className="cursor-pointer text-sm!" to="/signup">
             Signup
           </Link>
