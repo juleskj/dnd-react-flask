@@ -5,7 +5,7 @@ import ContextLink from "../../components/wiki/ContextLink";
 import ContextLinkWrapper from "../../components/wiki/ContextLinkWrapper";
 import AddButton from "../../components/AddButton";
 import useScrollDirection from "../../utils/UseScrollDirection";
-
+import EntryDetailList from "../../components/wiki/EntryDetailList";
 import { useParams } from "react-router";
 
 function WikiCreateEntry() {
@@ -30,42 +30,7 @@ function WikiCreateEntry() {
           voluptas dolorum mollitia quis quae natus quia, officia aspernatur
           cumque eveniet?
         </p>
-
-        <section className=" [&_span]:inline-block [&_span]:first-letter:uppercase [&_span]:text-xl [&_p]:underline ">
-          <h2>list</h2>
-          <ul>
-            <li>
-              <p>
-                <span>age:</span> 23
-              </p>
-            </li>
-            <li>
-              <p>
-                <span>born:</span> 1503
-              </p>
-            </li>
-            <li>
-              <p>
-                <span>family name:</span> Stormwind
-              </p>
-            </li>
-            <li>
-              <p>
-                <span>lives:</span> Waterdeep
-              </p>
-            </li>
-            <li>
-              <p>
-                <span>class:</span> Wizard
-              </p>
-            </li>
-            <li>
-              <p>
-                <span>dnd race:</span> Half-elf
-              </p>
-            </li>
-          </ul>
-        </section>
+        <EntryDetailList></EntryDetailList>
       </section>
 
       <section
