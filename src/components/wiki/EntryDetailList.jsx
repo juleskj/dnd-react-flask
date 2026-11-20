@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from "../../components/Button";
 import InputField from "../../components/InputField";
+import EntryDetail from "../../components/wiki/EntryDetail";
 
 function EntryDetailList({ entryDetailList }) {
   const [listTitle, setListTitle] = useState("");
@@ -30,6 +31,10 @@ function EntryDetailList({ entryDetailList }) {
     };
     // later save to local storage
     setEntryList((prev) => [...prev, newEntryList]);
+  }
+
+  function remove(id) {
+    setEntryList((prev) => prev.filter((link) => link.id !== id));
   }
   return (
     <section className=" [&_span]:inline-block [&_span]:first-letter:uppercase [&_span]:text-xl [&_p]:underline ">
@@ -68,12 +73,7 @@ function EntryDetailList({ entryDetailList }) {
       </form>
       <ul className="py-4">
         {entryList.map((listItem) => (
-          <li key={listItem.id}>
-            <p>
-              <span>{listItem.entryListTitle}:</span>
-              {listItem.entryListValue}
-            </p>
-          </li>
+          <EntryDetail listItem={listItem} remove={remove}></EntryDetail>
         ))}
       </ul>
     </section>
