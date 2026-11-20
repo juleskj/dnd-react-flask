@@ -2,6 +2,7 @@ import MainLayout from "../../layouts/MainLayout";
 import Breadcrumb from "../../components/navigation/BreadCrumb";
 import UploadImg from "../../components/UploadImg";
 import ContextLink from "../../components/wiki/ContextLink";
+import ContextLinkWrapper from "../../components/wiki/ContextLinkWrapper";
 import AddButton from "../../components/AddButton";
 import useScrollDirection from "../../utils/UseScrollDirection";
 
@@ -68,28 +69,9 @@ function WikiCreateEntry() {
       </section>
 
       <section
-        className={`sticky md:grid md:grid-cols-2 lg:grid lg:grid-cols-2 flex flex-col gap-2   [transition:transform_0.3s_ease-in,0.3s_linear]  ${scrollDirection === "down" ? "top-5" : "top-25"}`}
+        className={`sticky [transition:transform_0.3s_ease-in,0.3s_linear]  ${scrollDirection === "down" ? "top-5" : "top-25"}`}
       >
-        <AddButton
-          css="col-span-2 lg:min-w-full"
-          btnText="add context"
-        ></AddButton>
-
-        <ContextLink
-          categori="npc"
-          worldSlug={worldSlug}
-          contextSlug="the-jailer"
-        ></ContextLink>
-        <ContextLink
-          categori="npc"
-          worldSlug={worldSlug}
-          contextSlug="the-jailer"
-        ></ContextLink>
-        <ContextLink
-          categori="npc"
-          worldSlug={worldSlug}
-          contextSlug="the-jailer"
-        ></ContextLink>
+        <ContextLinkWrapper worldSlug={worldSlug}></ContextLinkWrapper>
       </section>
     </MainLayout>
   );

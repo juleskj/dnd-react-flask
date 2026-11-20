@@ -6,7 +6,7 @@ import ContextLink from "../../components/wiki/ContextLink";
 import fromSlug from "../../utils/FromSlug";
 
 import useScrollDirection from "../../utils/UseScrollDirection";
-import AddButton from "../../components/AddButton";
+import ContextLinkWrapper from "../../components/wiki/ContextLinkWrapper";
 
 function WikiEntry() {
   const { entry, slug } = useParams();
@@ -86,28 +86,12 @@ function WikiEntry() {
       </section>
 
       <section
-        className={`sticky md:grid md:grid-cols-2 lg:grid lg:grid-cols-2 flex flex-col gap-2   [transition:transform_0.3s_ease-in,0.3s_linear]  ${scrollDirection === "down" ? "top-5" : "top-25"}`}
+        className={`sticky [transition:transform_0.3s_ease-in,0.3s_linear]  ${scrollDirection === "down" ? "top-5" : "top-25"}`}
       >
-        <AddButton
-          css="col-span-2 lg:min-w-full"
-          btnText="add context"
-        ></AddButton>
-
-        <ContextLink
-          categori="npc"
+        <ContextLinkWrapper
           worldSlug={worldSlug}
-          contextSlug="the-jailer"
-        ></ContextLink>
-        <ContextLink
-          categori="npc"
-          worldSlug={worldSlug}
-          contextSlug="the-jailer"
-        ></ContextLink>
-        <ContextLink
-          categori="npc"
-          worldSlug={worldSlug}
-          contextSlug="the-jailer"
-        ></ContextLink>
+          currentSlug={worldEntry}
+        ></ContextLinkWrapper>
       </section>
     </MainLayout>
   );
