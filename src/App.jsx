@@ -4,7 +4,8 @@ import Wiki from "./pages/wikipedia/Wiki";
 import WikiWorld from "./pages/wikipedia/WikiWorld";
 import WikiEntry from "./pages/wikipedia/WikiEntry";
 import WikiCreateEntry from "./pages/wikipedia/WikiCreateEntry";
-import Campaign from "./pages/Campaign";
+
+import Campaigns from "./pages/campaigns/CampaignsView";
 import Calendar from "./pages/Calendar";
 import Character from "./pages/Character";
 import Login from "./pages/Login";
@@ -12,7 +13,9 @@ import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/ForgotPassword";
 import NewPassword from "./pages/NewPassword";
 import Verification from "./pages/Verification";
-
+import SingleCampaign from "./pages/campaigns/SingleCampaign";
+import SessionEntry from "./pages/sessions/SessionEntry";
+import SessionsView from "./pages/sessions/SessionsView";
 import "./App.css";
 
 function App() {
@@ -26,7 +29,6 @@ function App() {
 
       {/* main navigation pages */}
       <Route path="/" element={<Home />} />
-      <Route path="/campaign" element={<Campaign />} />
       <Route path="/calendar" element={<Calendar />} />
       <Route path="/character" element={<Character />} />
 
@@ -36,6 +38,14 @@ function App() {
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/new-password" element={<NewPassword />} />
       <Route path="/verify-account" element={<Verification />} />
+
+      {/* campaign pages */}
+      <Route path="/campaigns" element={<Campaigns />} />
+      <Route path="/campaigns/:slug" element={<SingleCampaign />} />
+      <Route path="/campaigns/:slug/sessions" element={<SessionsView />} />
+      <Route path="/sessions/:slug" element={<SessionEntry />} />
+      <Route path="/calendar" element={<Calendar />} />
+      <Route path="/character" element={<Character />} />
     </Routes>
   );
 }
