@@ -4,6 +4,7 @@ import fromSlug from "../../utils/FromSlug";
 import Breadcrumb from "../../components/navigation/BreadCrumb";
 import GoToPageCard from "../../components/GoToPageCard";
 import EditButton from "../../components/EditButton";
+import SessionsOverview from "../../components/SessionsOverview";
 
 function SessionEntry() {
   const { slug } = useParams();
@@ -56,6 +57,10 @@ function SessionEntry() {
           <GoToPageCard cardTitle="Sargeras" additionalText="NPC" color="teal" />
           <GoToPageCard cardTitle="Sargeras" additionalText="NPC" color="teal" />
         </section>
+      </section>
+      <section className="my-12">
+        <h3 className="font-heading text-3xl! mb-2">Previous sessions</h3>
+        <SessionsOverview isResponsive />
       </section>
     </MainLayout>
   );
