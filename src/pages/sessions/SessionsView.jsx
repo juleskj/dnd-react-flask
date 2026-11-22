@@ -19,31 +19,31 @@ function SessionsView() {
       id: "1",
       sessionNumber: "01",
       date: "12/12",
-      slug: toSlug("Session 01"),
+      slug: toSlug("01 Session"),
     },
     {
       id: "2",
       sessionNumber: "02",
       date: "19/12",
-      slug: toSlug("Session 02"),
+      slug: toSlug("02 Session"),
     },
     {
       id: "3",
       sessionNumber: "03",
       date: "03/01",
-      slug: toSlug("Session 03"),
+      slug: toSlug("03 Session"),
     },
     {
       id: "3",
       sessionNumber: "04",
       date: "10/01",
-      slug: toSlug("Session 04"),
+      slug: toSlug("04 Session"),
     },
     {
       id: "3",
       sessionNumber: "05",
       date: "13/01",
-      slug: toSlug("Session 05"),
+      slug: toSlug("05 Session"),
     },
   ];
 

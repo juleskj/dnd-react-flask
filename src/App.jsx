@@ -26,7 +26,7 @@ function App() {
       <Route path="/campaigns" element={<Campaigns />} />
       <Route path="/campaigns/:slug" element={<SingleCampaign />} />
       <Route path="/campaigns/:slug/sessions" element={<SessionsView />} />
-      <Route path="/sessions/:slug" element={<SessionEntry />} />
+      <Route path="campaigns/:slug/sessions/:slug" element={<SessionEntry />} />
       <Route path="/calendar" element={<Calendar />} />
       <Route path="/character" element={<Character />} />
 

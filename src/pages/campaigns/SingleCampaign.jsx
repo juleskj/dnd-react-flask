@@ -17,19 +17,19 @@ function SingleCampaign() {
       id: "1",
       sessionNumber: "01",
       date: "12/12",
-      slug: toSlug("Session 01"),
+      slug: toSlug("01 Session"),
     },
     {
       id: "2",
       sessionNumber: "02",
       date: "19/12",
-      slug: toSlug("Session 02"),
+      slug: toSlug("02 Session"),
     },
     {
       id: "3",
       sessionNumber: "03",
       date: "03/01",
-      slug: toSlug("Session 03"),
+      slug: toSlug("03 Session"),
     },
   ];
   return (
@@ -43,7 +43,7 @@ function SingleCampaign() {
       <section className="grid sm:grid-cols-2 gap-8">
         <div className="grid gap-4">
           {sessions.map((session) => (
-            <SessionCard key={session.id} sessionNumber={session.sessionNumber} slug={session.slug} date={session.date} variant="small" />
+            <SessionCard key={session.id} sessionNumber={session.sessionNumber} slug={`sessions/${session.slug}`} date={session.date} variant="small" />
           ))}
           <Link className="flex justify-end items-center gap-2 pt-3" to={`/campaigns/${campaignSlug}/sessions`}>
             <p className="text-sm! text-accent-400">see all sessions</p>
