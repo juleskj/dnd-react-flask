@@ -12,6 +12,7 @@ import { useState, useEffect } from "react";
 import InputField from "../../components/InputField";
 
 const ENTRY_DATA = {
+  entry_title: "",
   text: "",
   details: [], // [{ id, entryListTitle, entryListValue }]
   links: [], // [{ id, categori, slug }]
@@ -29,12 +30,11 @@ function WikiCreateEntry() {
   const [entry, setEntry] = useState(() => {
     try {
       const saved = localStorage.getItem(entryKey);
-      return saved ? JSON.parse(saved) : ENTRY_DATA;
+      return saved ? { ...ENTRY_DATA, ...JSON.parse(saved) } : ENTRY_DATA;
     } catch {
       return ENTRY_DATA;
     }
   });
-
   // auto-save the entry
   useEffect(() => {
     localStorage.setItem(entryKey, JSON.stringify(entry));
@@ -61,6 +61,8 @@ function WikiCreateEntry() {
           labelText=" Entry title"
           required
           color="dark"
+          value={entry.entry_title}
+          onChange={(e) => updateField("entry_title", e.target.value)}
         ></InputField>
 
         <UploadImg
