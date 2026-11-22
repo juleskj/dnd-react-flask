@@ -89,6 +89,7 @@ function WikiEntry() {
         className={`sticky [transition:transform_0.3s_ease-in,0.3s_linear]  ${scrollDirection === "down" ? "top-5" : "top-25"}`}
       >
         <ContextLinkWrapper
+          editing={false}
           worldSlug={worldSlug}
           currentSlug={worldEntry}
         ></ContextLinkWrapper>

@@ -5,7 +5,7 @@ function EntryDetail({ listItem, remove }) {
         <button
           type="button"
           onClick={() => remove(listItem.id)}
-          aria-label={`Remove ${listItem.entryListTitle}`}
+          aria-label={`Remove ${listItem.entry_list_title}`}
           className="absolute right-3 top-2"
         >
           <svg
@@ -23,8 +23,8 @@ function EntryDetail({ listItem, remove }) {
       )}
 
       <p>
-        <span>{listItem.entryListTitle}:</span>
-        {listItem.entryListValue}
+        <span>{listItem.entry_list_title}:</span>
+        {listItem.entry_list_value}
       </p>
     </li>
   );
