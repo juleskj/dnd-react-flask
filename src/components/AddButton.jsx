@@ -26,7 +26,7 @@ function AddButton({
     return (
       <Link
         to={to}
-        className={`${css} hover-scale  border-2 ${colors[color]} flex items-center justify-between py-2 px-4   rounded-[10px] w-full md:max-w-full lg:max-w-85`}
+        className={`${css} bg-light-100 hover-scale  border-2 ${colors[color]} flex items-center justify-between py-2 px-4   rounded-[10px] w-full md:max-w-full lg:max-w-85`}
       >
         {btnText}
         <svg
@@ -43,7 +43,7 @@ function AddButton({
 
   return (
     <button
-      className={`${css} hover-scale  border-2 ${colors[color]} flex items-center justify-between py-2 px-4   rounded-[10px] w-full md:max-w-full lg:max-w-85`}
+      className={`${css} bg-light-100 hover-scale  border-2 ${colors[color]} flex items-center justify-between py-2 px-4   rounded-[10px] w-full md:max-w-full lg:max-w-85`}
       {...props}
     >
       {btnText}

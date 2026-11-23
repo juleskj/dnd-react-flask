@@ -50,7 +50,7 @@ function AddWikiCategori({ categori, onChange, editing = true }) {
         ></AddButton>
       )}
       {open && !categori && (
-        <div className="flex flex-col gap-2 rounded-[10px] border-2 border-main-300 p-2">
+        <div className="flex flex-col gap-2 bg-light-100 rounded-[10px] border-2 border-main-300 p-2">
           {CATEGORIES.map((category) => (
             <button
               key={category.id}
@@ -73,7 +73,7 @@ function AddWikiCategori({ categori, onChange, editing = true }) {
             </button>
           ))}
 
-          <div className="grid grid-cols-[2fr_1fr] gap-2 border-t-2 border-main-300 pt-2">
+          <div className="grid grid-cols-[2fr_1fr] gap-2 border-t-2 border-main-300  pt-2">
             <InputField
               name="new_categori"
               placeholder="Or create a new category..."
@@ -95,7 +95,7 @@ function AddWikiCategori({ categori, onChange, editing = true }) {
       )}
 
       {categori && (
-        <section className="flex items-center justify-between rounded-[10px] border-2 border-main-300 px-3 py-1">
+        <section className="flex items-center justify-between bg-light-100 rounded-[10px] border-2 border-main-300 px-3 py-1">
           <p>{categori.title}</p>
           {editing && (
             <button

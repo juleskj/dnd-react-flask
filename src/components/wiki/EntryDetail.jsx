@@ -2,7 +2,7 @@ function EntryDetail({ listItem, remove }) {
   return (
     <li
       key={listItem.id}
-      className="border-2 border-main-300 py-2 px-4 rounded-[10px] w-full flex flex-row items-center justify-between"
+      className="border-2 border-main-300 bg-light-100 py-2 px-4 rounded-[10px] w-full flex flex-row items-center justify-between"
     >
       <p>
         <span>{listItem.entry_list_title}:</span>

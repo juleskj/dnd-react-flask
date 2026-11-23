@@ -37,10 +37,9 @@ function EntryDetailList({ details, onChange }) {
   }
 
   return (
-    <section className=" [&_span]:inline-block [&_span]:first-letter:uppercase [&_span]:text-xl [&_p]:underline ">
+    <section className="flex flex-col gap-3 [&_span]:inline-block [&_span]:first-letter:uppercase [&_span]:text-xl [&_p]:underline ">
       <h2>Quick details</h2>
 
-      <span className="py-1"></span>
       <form onSubmit={handleSubmit} className="flex flex-col">
         <div className="py-2 grid grid-cols-2 gap-2">
           <InputField
@@ -63,12 +62,11 @@ function EntryDetailList({ details, onChange }) {
             value={listValue}
             color="dark"
           ></InputField>
-          <span className="py-1"></span>
         </div>
 
         <Button buttonText="add detail" center={false}></Button>
       </form>
-      <ul className="py-4 flex flex-col gap-2">
+      <ul className="flex flex-col gap-4 pt-4">
         {details.map((listItem) => (
           <EntryDetail
             key={listItem.id}

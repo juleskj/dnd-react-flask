@@ -28,7 +28,7 @@ function ContextLinks({
   }
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-4">
       {editing && (
         <AddButton
           css="col-span-2 lg:min-w-full"
@@ -70,7 +70,7 @@ function ContextLinks({
                   />
                 </svg>
               </summary>
-              <ul className="pl-4">
+              <ul className="pl-4 ">
                 {category.entries
                   .filter((entry) => entry.slug !== currentSlug) // can't link to the entry itself
                   .map((entry) => (

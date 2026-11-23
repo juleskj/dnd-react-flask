@@ -3,7 +3,7 @@ import fromSlug from "../../utils/FromSlug";
 
 function ContextLink({ categori, worldSlug, contextSlug, onRemove }) {
   return (
-    <article className="relative hover-scale flex flex-col justify-between  bg-main-100  px-4 py-2 rounded-[10px]  w-full  h-auto ">
+    <article className="relative  hover-scale flex flex-col justify-between  bg-main-100  px-4 py-2 rounded-[10px]  w-full  h-auto ">
       {onRemove && (
         <button
           type="button"

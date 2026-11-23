@@ -20,7 +20,7 @@ function UploadImg({ imgId, imageFile, setImageFile }) {
         src={preview}
         alt="entry image"
         id={`upload-img-${imgId}`}
-        className="w-full mb-2 max-h-75 object-cover"
+        className="w-full mb-2 max-h-75 object-cover border-2 border-main-300 rounded-[10px]"
       />
 
       <label
