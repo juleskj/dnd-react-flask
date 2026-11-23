@@ -43,6 +43,7 @@ function ContextLinks({
       <div className="sticky md:grid md:grid-cols-2 lg:grid lg:grid-cols-2 flex flex-col gap-2">
         {links.map((link) => (
           <ContextLink
+            editing={editing}
             key={link.id}
             categori={link.categori}
             worldSlug={worldSlug}
@@ -70,6 +71,7 @@ function ContextLinks({
                   />
                 </svg>
               </summary>
+
               <ul className="pl-4 ">
                 {category.entries
                   .filter((entry) => entry.slug !== currentSlug) // can't link to the entry itself

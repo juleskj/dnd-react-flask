@@ -1,10 +1,10 @@
 import { Link } from "react-router";
 import fromSlug from "../../utils/FromSlug";
 
-function ContextLink({ categori, worldSlug, contextSlug, onRemove }) {
+function ContextLink({ categori, worldSlug, contextSlug, onRemove, editing }) {
   return (
     <article className="relative  hover-scale flex flex-col justify-between  bg-main-100  px-4 py-2 rounded-[10px]  w-full  h-auto ">
-      {onRemove && (
+      {onRemove && editing && (
         <button
           type="button"
           onClick={onRemove}

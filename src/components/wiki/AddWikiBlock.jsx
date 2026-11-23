@@ -3,7 +3,13 @@ import UploadImg from "../UploadImg";
 
 const MAX_TEXT = 10000;
 
-function AddWikiBlock({ blocks = [], onChange, imageFiles, setImageFiles }) {
+function AddWikiBlock({
+  blocks = [],
+  onChange,
+  imageFiles,
+  setImageFiles,
+  editing = true,
+}) {
   function addBlock(type) {
     const block =
       type === "text"
@@ -34,31 +40,40 @@ function AddWikiBlock({ blocks = [], onChange, imageFiles, setImageFiles }) {
       {blocks.map((block) => (
         <div key={block.id} className="flex flex-col ">
           {block.type === "text" ? (
-            <div>
-              <p className="self-end text-xs text-gray-500">
-                {block.content.length} / {MAX_TEXT}
-              </p>
-              <textarea
-                name={`entry_text_${block.id}`}
-                placeholder="Write something..."
-                maxlength={MAX_TEXT}
-                rows={10}
-                value={block.content}
-                onChange={(e) =>
-                  updateBlock(block.id, { content: e.target.value })
-                }
-                className="w-full resize-none rounded-[10px] border-2 border-teal-800 bg-gray-100 px-5 py-3 text-base text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-4 focus:ring-teal-800/20"
-              ></textarea>
-            </div>
-          ) : (
+            editing ? (
+              <>
+                <textarea
+                  name={`entry_text_${block.id}`}
+                  placeholder="Write something..."
+                  maxLength={MAX_TEXT}
+                  rows={10}
+                  value={block.content}
+                  onChange={(e) =>
+                    updateBlock(block.id, { content: e.target.value })
+                  }
+                  className="w-full resize-none rounded-[10px] border-2 border-teal-800 bg-gray-100 px-5 py-3 text-base text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-4 focus:ring-teal-800/20"
+                ></textarea>
+                <p className="self-end text-xs text-gray-500">
+                  {(block.content ?? "").length} / {MAX_TEXT}
+                </p>
+              </>
+            ) : (
+              <p className="whitespace-pre-wrap">{block.content}</p>
+            )
+          ) : editing ? (
             <UploadImg
               imgId={block.id}
               imageFile={imageFiles[block.id] ?? null}
+              existingUrl={block.imageUrl}
               setImageFile={(file) => setBlockImage(block.id, file)}
             ></UploadImg>
+          ) : (
+            block.imageUrl && (
+              <img src={block.imageUrl} alt="" className="w-full" />
+            )
           )}
 
-          {blocks.length > 1 && (
+          {blocks.length > 1 && editing && (
             <button
               type="button"
               onClick={() => removeBlock(block.id)}
@@ -70,20 +85,22 @@ function AddWikiBlock({ blocks = [], onChange, imageFiles, setImageFiles }) {
         </div>
       ))}
 
-      <div className="flex gap-2">
-        <AddButton
-          icon="add"
-          btnText="Add text"
-          type="button"
-          onClick={() => addBlock("text")}
-        ></AddButton>
-        <AddButton
-          icon="add"
-          btnText="Add image"
-          type="button"
-          onClick={() => addBlock("image")}
-        ></AddButton>
-      </div>
+      {editing && (
+        <div className="flex gap-2">
+          <AddButton
+            icon="add"
+            btnText="Add text"
+            type="button"
+            onClick={() => addBlock("text")}
+          ></AddButton>
+          <AddButton
+            icon="add"
+            btnText="Add image"
+            type="button"
+            onClick={() => addBlock("image")}
+          ></AddButton>
+        </div>
+      )}
     </div>
   );
 }

@@ -70,7 +70,7 @@ function EntryDetailList({ details, onChange, editing }) {
           <Button buttonText="add detail" center={false}></Button>
         </form>
       )}
-      <ul className="flex flex-col gap-4 pt-4">
+      <ul className="flex flex-col gap-2  pt-2">
         {details.map((listItem) => (
           <EntryDetail
             key={listItem.id}
