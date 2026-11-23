@@ -5,9 +5,19 @@ import EditButton from "../../components/EditButton";
 import { useEffect, useState } from "react";
 import Button from "../../components/Button";
 import fromSlug from "../../utils/FromSlug";
-
+import EntryDetailList from "../../components/wiki/EntryDetailList";
 import useScrollDirection from "../../utils/UseScrollDirection";
 import ContextLinkWrapper from "../../components/wiki/ContextLinkWrapper";
+
+const DUMMY_ENTRY = {
+  entry_title: "Stormwind",
+  categori: null,
+  blocks: [
+    { id: "b1", type: "text", content: "Lorem ipsum, dolor sit amet..." },
+  ],
+  details: [],
+  links: [],
+};
 
 function WikiEntry() {
   const { entry: entrySlug, slug } = useParams();
@@ -15,14 +25,14 @@ function WikiEntry() {
   const scrollDirection = useScrollDirection();
 
   const [isEditing, setIsEditing] = useState(false);
-  const [entry, setEntry] = useState(null);
+  const [entry, setEntry] = useState(DUMMY_ENTRY);
   const [draft, setDraft] = useState(null);
 
   const [imageFiles, setImageFiles] = useState({});
 
-  // useEffect(() => {
-  //   setEntry(getEntryBySlug(entrySlug));
-  // }, [entrySlug]);
+  useEffect(() => {
+    setEntry(DUMMY_ENTRY);
+  }, [entrySlug]);
 
   function startEdit() {
     setDraft(entry);
@@ -46,9 +56,8 @@ function WikiEntry() {
     setDraft((prev) => ({ ...prev, [field]: value }));
   }
 
-  // if (!entry) return <p>Loading...</p>;
+  if (!entry) return <p>Loading...</p>;
   const data = isEditing ? draft : entry;
-
   return (
     <MainLayout
       headerTitle={fromSlug(entrySlug)}
@@ -87,41 +96,11 @@ function WikiEntry() {
           cumque eveniet?
         </p>
 
-        <section className=" [&_span]:inline-block [&_span]:first-letter:uppercase [&_span]:text-xl [&_p]:underline ">
-          <h2>list</h2>
-          <ul>
-            <li>
-              <p>
-                <span>age:</span> 23
-              </p>
-            </li>
-            <li>
-              <p>
-                <span>born:</span> 1503
-              </p>
-            </li>
-            <li>
-              <p>
-                <span>family name:</span> Stormwind
-              </p>
-            </li>
-            <li>
-              <p>
-                <span>lives:</span> Waterdeep
-              </p>
-            </li>
-            <li>
-              <p>
-                <span>class:</span> Wizard
-              </p>
-            </li>
-            <li>
-              <p>
-                <span>dnd race:</span> Half-elf
-              </p>
-            </li>
-          </ul>
-        </section>
+        <EntryDetailList
+          editing={isEditing}
+          details={data.details}
+          onChange={(details) => updateDraft("details", details)}
+        />
         <img
           src="https://placehold.co/600x400"
           alt=""

@@ -86,6 +86,7 @@ function WikiCreateEntry() {
         ></AddWikiBlock>
 
         <EntryDetailList
+          editing={true}
           details={entry.details}
           onChange={(details) => updateField("details", details)}
         ></EntryDetailList>

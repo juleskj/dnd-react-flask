@@ -71,7 +71,7 @@ function EditButton({ onEdit }) {
                 type="button"
                 onClick={() => {
                   setIsOpen(false);
-                  onEdit?.();
+                  onEdit();
                 }}
               >
                 Edit
