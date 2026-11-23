@@ -1,6 +1,5 @@
 import MainLayout from "../../layouts/MainLayout";
 import Breadcrumb from "../../components/navigation/BreadCrumb";
-import UploadImg from "../../components/UploadImg";
 
 import ContextLinkWrapper from "../../components/wiki/ContextLinkWrapper";
 
@@ -11,8 +10,9 @@ import { useParams } from "react-router";
 import { useState, useEffect } from "react";
 import InputField from "../../components/InputField";
 import AddWikiCategori from "../../components/wiki/AddWikiCategori";
-import AddButton from "../../components/AddButton";
+
 import AddWikiBlock from "../../components/wiki/AddWikiBlock";
+import Button from "../../components/Button";
 
 const ENTRY_DATA = {
   entry_title: "",
@@ -49,13 +49,18 @@ function WikiCreateEntry() {
     setEntry((prev) => ({ ...prev, [field]: value }));
   }
 
+  function handleSave() {
+    console.log("entry:", entry);
+    console.log("images:", imageFiles);
+  }
+
   return (
     <MainLayout
       headerTitle="New content"
       color="teal"
       css="lg:grid lg:grid-cols-2 lg:items-start lg:gap-16 md:gap-8 "
     >
-      <section className="flex flex-col gap-10 *:bg-main-100/20 *:p-2 *:rounded-[10px] items-stretch [&_p]:max-w-[65ch]  relative mb-8 mb:mb-0 lg:mb-0">
+      <section className="flex flex-col gap-6 *:bg-main-100/20 *:p-2 *:m-0 *:rounded-[10px] items-stretch [&_p]:max-w-[65ch]  relative mb-8 mb:mb-0 lg:mb-0">
         <Breadcrumb></Breadcrumb>
         <AddWikiCategori
           categori={entry.categori}
@@ -97,6 +102,11 @@ function WikiCreateEntry() {
       </section>
       {/* see the preview of whats getting saved */}
       {/* <pre className="text-xs">{JSON.stringify({ ...entry }, null, 2)}</pre> */}
+      <Button
+        buttonText="save entry"
+        type="button"
+        onClick={handleSave}
+      ></Button>
     </MainLayout>
   );
 }

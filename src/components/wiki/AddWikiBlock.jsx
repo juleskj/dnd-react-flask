@@ -41,7 +41,7 @@ function AddWikiBlock({ blocks = [], onChange, imageFiles, setImageFiles }) {
               <textarea
                 name={`entry_text_${block.id}`}
                 placeholder="Write something..."
-                maxLength={MAX_TEXT}
+                maxlength={MAX_TEXT}
                 rows={10}
                 value={block.content}
                 onChange={(e) =>

@@ -2,29 +2,79 @@ import MainLayout from "../../layouts/MainLayout";
 import Breadcrumb from "../../components/navigation/BreadCrumb";
 import { useParams, Link } from "react-router";
 import EditButton from "../../components/EditButton";
-import ContextLink from "../../components/wiki/ContextLink";
+import { useEffect, useState } from "react";
+import Button from "../../components/Button";
 import fromSlug from "../../utils/FromSlug";
 
 import useScrollDirection from "../../utils/UseScrollDirection";
 import ContextLinkWrapper from "../../components/wiki/ContextLinkWrapper";
 
 function WikiEntry() {
-  const { entry, slug } = useParams();
-
-  const worldSlug = slug ?? "";
-  const worldEntry = entry ?? "";
+  const { entry: entrySlug, slug } = useParams();
 
   const scrollDirection = useScrollDirection();
 
+  const [isEditing, setIsEditing] = useState(false);
+  const [entry, setEntry] = useState(null);
+  const [draft, setDraft] = useState(null);
+
+  const [imageFiles, setImageFiles] = useState({});
+
+  // useEffect(() => {
+  //   setEntry(getEntryBySlug(entrySlug));
+  // }, [entrySlug]);
+
+  function startEdit() {
+    setDraft(entry);
+    setImageFiles({});
+    setIsEditing(true);
+  }
+
+  function cancelEdit() {
+    setDraft(null);
+    setImageFiles({});
+    setIsEditing(false);
+  }
+
+  async function saveEdit() {
+    console.log("update", draft, imageFiles);
+    setEntry(draft);
+    setIsEditing(false);
+  }
+
+  function updateDraft(field, value) {
+    setDraft((prev) => ({ ...prev, [field]: value }));
+  }
+
+  // if (!entry) return <p>Loading...</p>;
+  const data = isEditing ? draft : entry;
+
   return (
     <MainLayout
-      headerTitle={fromSlug(worldEntry)}
+      headerTitle={fromSlug(entrySlug)}
       color="teal"
       css="lg:grid lg:grid-cols-2 lg:items-start lg:gap-16 md:gap-8 "
     >
       <section className="flex flex-col gap-2 [&_p]:max-w-[65ch]  items-start relative mb-8 mb:mb-0 lg:mb-0">
         <Breadcrumb></Breadcrumb>
-        <EditButton></EditButton>
+        {isEditing ? (
+          <div className="grid grid-cols-2  gap-2">
+            <Button
+              buttonText="save changes"
+              buttonType="button"
+              onClick={saveEdit}
+              center={false}
+            />
+            <Button
+              buttonText="cancel"
+              center={false}
+              buttonType="button"
+              onClick={cancelEdit}
+            />
+          </div>
+        ) : (
+          <EditButton onEdit={startEdit} />
+        )}
         <img
           src="https://placehold.co/600x400"
           alt=""
@@ -90,8 +140,8 @@ function WikiEntry() {
       >
         <ContextLinkWrapper
           editing={false}
-          worldSlug={worldSlug}
-          currentSlug={worldEntry}
+          worldSlug={slug}
+          currentSlug={entrySlug}
         ></ContextLinkWrapper>
       </section>
     </MainLayout>

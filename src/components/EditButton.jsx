@@ -1,13 +1,13 @@
 import { useState, useRef, useEffect } from "react";
 
-function EditButton() {
+function EditButton({ onEdit }) {
   const [isOpen, setIsOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
+  const menuRef = useRef(null);
 
   // close menu when clicking outside
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+    function handleClickOutside(e) {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
         setIsOpen(false);
       }
     }
@@ -71,7 +71,7 @@ function EditButton() {
                 type="button"
                 onClick={() => {
                   setIsOpen(false);
-                  // Open edit window here
+                  onEdit?.();
                 }}
               >
                 Edit
