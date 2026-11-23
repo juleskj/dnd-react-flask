@@ -42,7 +42,7 @@ function EntryDetailList({ details, onChange }) {
 
       <span className="py-1"></span>
       <form onSubmit={handleSubmit} className="flex flex-col">
-        <div className="py-2 flex flex-row gap-2">
+        <div className="py-2 grid grid-cols-2 gap-2">
           <InputField
             onChange={(e) => setListTitle(e.target.value)}
             type="List title"
@@ -68,7 +68,7 @@ function EntryDetailList({ details, onChange }) {
 
         <Button buttonText="add detail" center={false}></Button>
       </form>
-      <ul className="py-4">
+      <ul className="py-4 flex flex-col gap-2">
         {details.map((listItem) => (
           <EntryDetail
             key={listItem.id}

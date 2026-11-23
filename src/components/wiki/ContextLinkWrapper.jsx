@@ -36,6 +36,7 @@ function ContextLinks({
           type="button"
           onClick={() => setOpen(!open)}
           aria-expanded={open}
+          icon={open ? "xmark" : "add"}
         ></AddButton>
       )}
 
@@ -56,7 +57,7 @@ function ContextLinks({
           {CATEGORIES.map((category) => (
             <details key={category.id} className="group">
               <summary className="flex cursor-pointer list-none items-center justify-between py-1 [&::-webkit-details-marker]:hidden">
-                {category.title}
+                <p>{category.title}</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 640 640"

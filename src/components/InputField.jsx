@@ -11,6 +11,7 @@ export default function InputField({
   maxlength,
   value,
   color = "light",
+  placeholder,
 }) {
   const colors = {
     light: {
@@ -45,6 +46,7 @@ export default function InputField({
         required={required}
         onChange={onChange}
         value={value}
+        placeholder={placeholder}
         className={`h-10 bg-light-100 w-full rounded-3xl border-2 ${colors[color].border} text-main-400 p-3`}
       />
     </div>

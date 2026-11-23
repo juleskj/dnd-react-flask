@@ -10,12 +10,14 @@ import { useParams } from "react-router";
 
 import { useState, useEffect } from "react";
 import InputField from "../../components/InputField";
+import AddWikiCategori from "../../components/wiki/AddWikiCategori";
 
 const ENTRY_DATA = {
   entry_title: "",
-  text: "",
-  details: [], // [{ id, entryListTitle, entryListValue }]
-  links: [], // [{ id, categori, slug }]
+  blocks: [{ id: "first", type: "text", content: "" }], // start med én tekstblok
+  details: [],
+  links: [],
+  categori: null,
 };
 
 function WikiCreateEntry() {
@@ -27,6 +29,7 @@ function WikiCreateEntry() {
 
   // image upload
   const [imageFile, setImageFile] = useState(null);
+
   const [entry, setEntry] = useState(() => {
     try {
       const saved = localStorage.getItem(entryKey);
@@ -50,9 +53,12 @@ function WikiCreateEntry() {
       color="teal"
       css="lg:grid lg:grid-cols-2 lg:items-start lg:gap-16 md:gap-8 "
     >
-      <section className="flex flex-col gap-2 [&_p]:max-w-[65ch]  items-start relative mb-8 mb:mb-0 lg:mb-0">
+      <section className="flex flex-col gap-2 items-stretch [&_p]:max-w-[65ch]  relative mb-8 mb:mb-0 lg:mb-0">
         <Breadcrumb></Breadcrumb>
-
+        <AddWikiCategori
+          categori={entry.categori}
+          onChange={(categori) => updateField("categori", categori)}
+        />
         <InputField
           type="text"
           placeholder="give your creatating a title"
@@ -96,6 +102,7 @@ function WikiCreateEntry() {
           onChange={(links) => updateField("links", links)}
         />
       </section>
+      {/* see the preview of whats getting saved */}
       {/* <pre className="text-xs">
         {JSON.stringify(
           { ...entry, image_url: imageFile?.name ?? null },

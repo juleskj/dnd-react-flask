@@ -1,12 +1,18 @@
 function EntryDetail({ listItem, remove }) {
   return (
-    <li key={listItem.id} className="relative">
+    <li
+      key={listItem.id}
+      className="border-2 border-main-300 py-2 px-4 rounded-[10px] w-full flex flex-row items-center justify-between"
+    >
+      <p>
+        <span>{listItem.entry_list_title}:</span>
+        {listItem.entry_list_value}
+      </p>
       {remove && (
         <button
           type="button"
           onClick={() => remove(listItem.id)}
           aria-label={`Remove ${listItem.entry_list_title}`}
-          className="absolute right-3 top-2"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -21,11 +27,6 @@ function EntryDetail({ listItem, remove }) {
           </svg>
         </button>
       )}
-
-      <p>
-        <span>{listItem.entry_list_title}:</span>
-        {listItem.entry_list_value}
-      </p>
     </li>
   );
 }
