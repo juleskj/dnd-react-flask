@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 
-function EditButton({ onEdit }) {
+function EditButton({ onEdit, side = "left" }) {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
 
@@ -20,7 +20,7 @@ function EditButton({ onEdit }) {
   }, []);
 
   return (
-    <div className="" ref={menuRef}>
+    <div className="relative" ref={menuRef}>
       <button
         type="button"
         className="grid place-items-center cursor-pointer align-left"
@@ -31,7 +31,7 @@ function EditButton({ onEdit }) {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 640 640"
-          className="w-5 h-5 text-dark-100"
+          className="w-8 h-8 text-dark-100"
           aria-hidden="true"
         >
           <path
@@ -42,7 +42,9 @@ function EditButton({ onEdit }) {
       </button>
 
       {isOpen && (
-        <div className=" text-right mr-2 z-50  w-40 rounded-lg border-2 bg-light-100 p-3 shadow-lg">
+        <div
+          className={`absolute ${side === "left" ? "left-0" : "-right-1.5"} top-0 text-right mr-2 z-50  w-40 rounded-lg border-2 bg-light-100 p-3 shadow-lg`}
+        >
           <div className="flex justify-items-start ">
             <button
               className=" cursor-pointer"
