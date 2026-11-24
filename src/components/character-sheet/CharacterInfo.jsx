@@ -29,7 +29,7 @@ function CharacterInfo({ info, onInfoChange, level, onLevelChange }) {
   const handleChange = (e) => onInfoChange(e.target.name, e.target.value);
 
   return (
-    <section className="grid w-full max-w-3xl grid-cols-1 gap-x-8 gap-y-6 rounded-[10px] p-6 sm:grid-cols-3">
+    <section className="grid w-full max-w-3xl grid-cols-1 gap-x-8 gap-y-6 rounded-[10px] lg:p-6 sm:grid-cols-3">
       {/* Class & level */}
       <Field id="class" label="Class & level">
         <div className="flex gap-2">

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import MainLayout from "../layouts/MainLayout";
 import AbilityComp from "../components/character-sheet/AbilityComp";
+import CombatStats from "../components/character-sheet/CombatStats";
 
 import { getProficiencyBonus, formatBonus } from "../utils/Cals";
 import CharacterInfo from "../components/character-sheet/CharacterInfo";
@@ -28,6 +29,7 @@ const ABILITIES = [
     skills: ["deception", "intimidation", "performance", "persuasion"],
   },
 ];
+
 function Character() {
   const [level, setLevel] = useState(1);
   const [inspiration, setInspiration] = useState(false);
@@ -61,13 +63,37 @@ function Character() {
   const handleToggle = (key) =>
     setProficient((prev) => ({ ...prev, [key]: !prev[key] }));
 
+  // combatstats
+
+  const [combat, setCombat] = useState({
+    ac: "",
+    speed: "",
+    hpMax: "",
+    hpCurrent: "",
+    hpTemp: "",
+    hitDice: "",
+  });
+  const [deathSaves, setDeathSaves] = useState({
+    successes: [false, false, false],
+    failures: [false, false, false],
+  });
+
+  const handleCombatChange = (name, value) =>
+    setCombat((prev) => ({ ...prev, [name]: value }));
+
+  const handleDeathSaveToggle = (type, index) =>
+    setDeathSaves((prev) => ({
+      ...prev,
+      [type]: prev[type].map((v, i) => (i === index ? !v : v)),
+    }));
+
   return (
     <MainLayout
       headerTitle="hello Character"
       color="teal"
-      css="grid gap-4 bg-main-100/20 p-4 rounded-[10px]"
+      css=" flex flex-col lg:grid lg:grid-rows-[auto_auto] lg:grid-cols-[auto_auto_auto] gap-4 lg:p-4 lg:bg-main-100/60 lg:rounded-[10px] lg:*:bg-light-100 *:rounded-[10px]  *:bg-main-100/30 *:p-2   lg:*:border-2 lg:*:border-main-300 lg:*:p-2"
     >
-      <div className="grid grid-cols-2 bg-light-100 border-2 border-main-300 rounded-[10px] p-2 ">
+      <div className=" lg:grid lg:grid-cols-2 col-span-3 py-4 lg:py-0">
         {/* character name */}
         <label
           htmlFor="character-name"
@@ -96,8 +122,8 @@ function Character() {
         />
       </div>
 
-      <section className="grid gap-4   rounded-[10px] w-fit">
-        <section className="flex flex-col gap-2 p-2  rounded-[10px] bg-light-100 ">
+      <section className="grid gap-4 rounded-[10px] ">
+        <section className="flex flex-col gap-2 p-2  rounded-[10px] bg-light-100 lg:bg-main-100/30 ">
           <div className="grid grid-cols-[auto_1fr] w-fit items-center ">
             <output className="bg-light-100 block text-2xl w-10 h-10 text-center place-content-center border-2 border-main-300 mr-2 rounded-[10px]">
               {formatBonus(proficiencyBonus)}
@@ -135,6 +161,15 @@ function Character() {
             proficiencyBonus={proficiencyBonus}
           />
         ))}
+      </section>
+      <section>
+        <CombatStats
+          combat={combat}
+          onCombatChange={handleCombatChange}
+          deathSaves={deathSaves}
+          onDeathSaveToggle={handleDeathSaveToggle}
+          dexterityScore={scores.dexterity}
+        />
       </section>
     </MainLayout>
   );
