@@ -2,11 +2,11 @@ import PurpleArrow from "../assets/purple-arrow.svg";
 import WhiteArrow from "../assets/white-arrow.svg";
 import { Link } from "react-router";
 
-export default function SessionCard({ isUpcoming, sessionNumber, date, sessionLink, id, slug, sessionNote, variant = "default" }) {
+export default function SessionCard({ isUpcoming, sessionNumber, date, id, slug, sessionNote, variant = "default" }) {
   return (
-    <Link key={id} to={`/sessions/${slug}`} className="active:scale-[0.98] hover:scale-[1.02] duration-100 ease-in">
+    <Link key={id} to={`${slug}`} className="active:scale-[0.98] hover:scale-[1.02] duration-100 ease-in">
       <article
-        className={`flex flex-col ${variant === "default" ? "sm:h-130 sm:w-72 md:w-58 lg:w-72" : "h-28 w-full"} rounded-xl  px-3 sm:px-4 py-5 text-left ${isUpcoming ? "bg-accent-100" : "bg-accent-300"}`}
+        className={`flex flex-col w-full ${variant === "default" ? "sm:h-130 lg:w-72" : "h-28"} rounded-xl  px-3 sm:px-4 py-5 text-left ${isUpcoming ? "bg-accent-100" : "bg-accent-300"}`}
       >
         <div className={`${variant === "small" && "flex "}`}>
           <div className={`${variant === "small" && "grid grid-cols-[1fr_3fr] gap-2 items-baseline-last"}`}>
