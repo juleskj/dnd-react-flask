@@ -22,7 +22,7 @@ function SingleCampaign() {
         <SessionsOverview />
         <div>
           <GoToPageCard cardTitle="See all active characters" link={"/character"} />
-          <GoToPageCard cardTitle="Forgotten Realms" link={"Forgotten Realms"} isAWikiLink additionalText="Go to wiki" />
+          <GoToPageCard cardTitle="Forgotten Realms" link={fromSlug(campaignSlug)} isAWikiLink additionalText="Go to wiki" />
         </div>
       </section>
     </MainLayout>

@@ -15,6 +15,7 @@ import SingleCampaign from "./pages/campaigns/SingleCampaign";
 import SessionEntry from "./pages/sessions/SessionEntry";
 import SessionsView from "./pages/sessions/SessionsView";
 import "./App.css";
+import NewSession from "./pages/sessions/NewSession";
 
 function App() {
   return (
@@ -26,7 +27,8 @@ function App() {
       <Route path="/campaigns" element={<Campaigns />} />
       <Route path="/campaigns/:slug" element={<SingleCampaign />} />
       <Route path="/campaigns/:slug/sessions" element={<SessionsView />} />
-      <Route path="campaigns/:slug/sessions/:slug" element={<SessionEntry />} />
+      <Route path="/campaigns/:slug/sessions/new-session" element={<NewSession />} />
+      <Route path="/campaigns/:campaignSlug/sessions/:sessionSlug" element={<SessionEntry />} />
       <Route path="/calendar" element={<Calendar />} />
       <Route path="/character" element={<Character />} />
 

@@ -14,7 +14,7 @@
 /* costum responsive fonts for tv screen */
 
 h1 {
-  @apply text-4xl sm:text-5xl md:text-6xl tv:text-9xl!;
+  @apply text-4xl sm:text-5xl md:text-5xl tv:text-8xl!;
 }
 
 h2 {
@@ -91,11 +91,11 @@ h2 {
 }
 
 h1 {
-  font-size: 56px;
+  font-size: 32px;
   letter-spacing: -1.68px;
   margin: 32px 0;
   @media (max-width: 1024px) {
-    font-size: 36px;
+    font-size: 24;
     margin: 20px 0;
   }
 }

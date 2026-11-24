@@ -5,8 +5,9 @@ import PurpleArrow from "../assets/purple-arrow.svg";
 import { useParams } from "react-router";
 
 export default function SessionsOverview({ isResponsive }) {
-  const { slug } = useParams();
-  const campaignSlug = slug ?? "";
+  const { slug, campaignSlug } = useParams();
+  const currentCampaignSlug = campaignSlug ?? slug;
+
   const sessions = [
     {
       id: "1",
@@ -30,7 +31,13 @@ export default function SessionsOverview({ isResponsive }) {
   return (
     <div className={`grid gap-4 grid-cols-1 ${isResponsive && "md:grid-cols-2 lg:grid-cols-3"}`}>
       {sessions.map((session) => (
-        <SessionCard key={session.id} sessionNumber={session.sessionNumber} slug={`sessions/${session.slug}`} date={session.date} variant="small" />
+        <SessionCard
+          key={session.id}
+          sessionNumber={session.sessionNumber}
+          slug={`/campaigns/${currentCampaignSlug}/sessions/${session.slug}`}
+          date={session.date}
+          variant="small"
+        />
       ))}
       <Link className={`flex justify-end items-center gap-2 pt-3 ${isResponsive && "md:col-span-2 lg:col-span-3"}`} to={`/campaigns/${campaignSlug}/sessions`}>
         <p className="text-sm! text-accent-400">see all sessions</p>
