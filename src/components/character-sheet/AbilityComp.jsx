@@ -22,9 +22,9 @@ function AbilityComp({
   const savingKey = `${ability}-saving-throw`;
 
   return (
-    <article className="grid grid-cols-2 gap-4 w-fit">
+    <article className="grid grid-cols-[auto_1fr] gap-4 w-fit ">
       <label
-        className="mt-2.5 aspect-square w-35 h-35 flex flex-col border-2 border-main-300 text-center rounded-[10px]"
+        className="bg-light-100 mt-2.5 aspect-square w-35 h-35 flex flex-col border-2 border-main-300 text-center rounded-[10px]"
         htmlFor={`${shortAbility}-ability`}
       >
         {/* score: the only input */}
@@ -48,7 +48,7 @@ function AbilityComp({
         <span className="bg-main-100/60">{ability}</span>
       </label>
 
-      <div>
+      <div className="bg-light-100 p-2 rounded-[10px]">
         <label
           htmlFor={`${shortAbility}-saving-throw`}
           className="flex flex-row items-center gap-2 text-xl! border-b-2 border-main-200 pb-2"
@@ -71,7 +71,7 @@ function AbilityComp({
           const slug = skill.replaceAll(" ", "-");
           const key = `${ability}-${slug}`;
           return (
-            <div key={skill} className="flex flex-row items-center gap-2">
+            <div key={skill} className=" flex flex-row items-center gap-2">
               <input
                 type="checkbox"
                 id={`${shortAbility}-${slug}`}
