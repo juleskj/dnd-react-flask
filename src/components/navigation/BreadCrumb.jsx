@@ -19,7 +19,9 @@ export default function Breadcrumb() {
             <li key={to} className="flex items-center gap-2">
               {i > 0 && <span aria-hidden="true">/</span>}
               {isLast ? (
-                <span aria-current="page">{fromSlug(part)}</span>
+                <span className="text-base font-sans " aria-current="page">
+                  {fromSlug(part)}
+                </span>
               ) : (
                 <Link className="underline" to={to}>
                   {fromSlug(part)}

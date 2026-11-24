@@ -1,15 +1,14 @@
+import { Link } from "react-router";
+
 function AddButton({
   btnText,
   icon = "add",
   color = "teal",
   css,
+  link = false,
+  to,
   ...props
-}: {
-  btnText: string;
-  icon?: "add" | "copy" | "downArror";
-  color?: "purple" | "teal";
-  css?: string;
-} & React.ComponentPropsWithoutRef<"button">) {
+}) {
   const colors = {
     purple: "border-accent-300",
     teal: "border-main-300",
@@ -19,11 +18,32 @@ function AddButton({
     copy: "M480 400L288 400C279.2 400 272 392.8 272 384L272 128C272 119.2 279.2 112 288 112L421.5 112C425.7 112 429.8 113.7 432.8 116.7L491.3 175.2C494.3 178.2 496 182.3 496 186.5L496 384C496 392.8 488.8 400 480 400zM288 448L480 448C515.3 448 544 419.3 544 384L544 186.5C544 169.5 537.3 153.2 525.3 141.2L466.7 82.7C454.7 70.7 438.5 64 421.5 64L288 64C252.7 64 224 92.7 224 128L224 384C224 419.3 252.7 448 288 448zM160 192C124.7 192 96 220.7 96 256L96 512C96 547.3 124.7 576 160 576L352 576C387.3 576 416 547.3 416 512L416 496L368 496L368 512C368 520.8 360.8 528 352 528L160 528C151.2 528 144 520.8 144 512L144 256C144 247.2 151.2 240 160 240L176 240L176 192L160 192z",
     downArror:
       "M297.4 470.6C309.9 483.1 330.2 483.1 342.7 470.6L534.7 278.6C547.2 266.1 547.2 245.8 534.7 233.3C522.2 220.8 501.9 220.8 489.4 233.3L320 402.7L150.6 233.4C138.1 220.9 117.8 220.9 105.3 233.4C92.8 245.9 92.8 266.2 105.3 278.7L297.3 470.7z",
+    xmark:
+      "M183.1 137.4C170.6 124.9 150.3 124.9 137.8 137.4C125.3 149.9 125.3 170.2 137.8 182.7L275.2 320L137.9 457.4C125.4 469.9 125.4 490.2 137.9 502.7C150.4 515.2 170.7 515.2 183.2 502.7L320.5 365.3L457.9 502.6C470.4 515.1 490.7 515.1 503.2 502.6C515.7 490.1 515.7 469.8 503.2 457.3L365.8 320L503.1 182.6C515.6 170.1 515.6 149.8 503.1 137.3C490.6 124.8 470.3 124.8 457.8 137.3L320.5 274.7L183.1 137.4z",
   };
+
+  if (link) {
+    return (
+      <Link
+        to={to}
+        className={`${css} bg-light-100 hover-scale  border-2 ${colors[color]} flex items-center justify-between py-2 px-4   rounded-[10px] w-full md:max-w-full lg:max-w-85`}
+      >
+        {btnText}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 640 640"
+          className="w-5 h-5 color-dark-100"
+          aria-hidden="true"
+        >
+          <path fill="currentColor" d={icons[icon]} />
+        </svg>
+      </Link>
+    );
+  }
 
   return (
     <button
-      className={`${css} hover-scale  border-2 ${colors[color]} flex items-center justify-between py-2 px-4   rounded-[10px] w-full md:max-w-full lg:max-w-85`}
+      className={`${css} bg-light-100 hover-scale  border-2 ${colors[color]} flex items-center justify-between py-2 px-4   rounded-[10px] w-full md:max-w-full lg:max-w-85`}
       {...props}
     >
       {btnText}

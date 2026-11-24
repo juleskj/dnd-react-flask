@@ -53,7 +53,11 @@ function WikiWorld() {
       css="flex flex-col gap-8 lg:*:max-w-[40vw]"
     >
       <Breadcrumb></Breadcrumb>
-      <AddButton btnText="add new content" css=""></AddButton>
+      <AddButton
+        link="true"
+        to={`/wiki/${worldSlug}/new-entry`}
+        btnText="add new content"
+      ></AddButton>
       <WikiCategory title="NPC" worldSlug={worldSlug} entries={NPCS} />
       <WikiCategory
         title="Locations"

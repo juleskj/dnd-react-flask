@@ -1,10 +1,41 @@
-export default function InputField({ type = "text", iDhtmlFor, inputName, labelText, inputRequirements, pattern, required, minlength, maxlength }) {
+export default function InputField({
+  onChange,
+  type = "text",
+  iDhtmlFor,
+  inputName,
+  labelText,
+  inputRequirements,
+  pattern,
+  required,
+  minlength,
+  maxlength,
+  value,
+  color = "light",
+  placeholder,
+}) {
+  const colors = {
+    light: {
+      text: "text-light-100",
+      border: "border-main-100",
+      requirments: "text-main-100",
+    },
+    dark: {
+      text: "text-dark-100",
+      border: "border-main-300",
+      requirments: "text-main-200",
+    },
+  };
+
   return (
     <div className="grid gap-y-2">
-      <label htmlFor={iDhtmlFor} className="text-light-100 text-xl!">
+      <label htmlFor={iDhtmlFor} className={`${colors[color].text} text-xl!`}>
         {labelText}
       </label>
-      {inputRequirements && <p className="text-main-100 text-sm!">{inputRequirements}</p>}
+      {inputRequirements && (
+        <p className={`${colors[color].requirments} text-sm!`}>
+          {inputRequirements}
+        </p>
+      )}
       <input
         type={type}
         id={iDhtmlFor}
@@ -13,7 +44,10 @@ export default function InputField({ type = "text", iDhtmlFor, inputName, labelT
         maxlength={maxlength}
         minlength={minlength}
         required={required}
-        className="h-10 bg-light-100 w-full rounded-3xl border-2 border-main-100 text-main-400 p-3"
+        onChange={onChange}
+        value={value}
+        placeholder={placeholder}
+        className={`h-10 bg-light-100 w-full rounded-3xl border-2 ${colors[color].border} text-main-400 p-3`}
       />
     </div>
   );
