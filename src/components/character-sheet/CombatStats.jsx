@@ -49,7 +49,7 @@ function CombatStats({
     onCombatChange(e.target.name, e.target.value.replace(/\D/g, ""));
 
   return (
-    <section className="grid  gap-4">
+    <section className="h-fit grid  gap-4">
       {/* AC, initiative, speed */}
       <div className="grid grid-cols-3 gap-4">
         <StatBox id="ac" label="Armor class">

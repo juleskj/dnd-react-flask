@@ -6,6 +6,9 @@ import CombatStats from "../components/character-sheet/CombatStats";
 import { getProficiencyBonus, formatBonus } from "../utils/Cals";
 import CharacterInfo from "../components/character-sheet/CharacterInfo";
 
+import AttacksComp from "../components/character-sheet/AttacksComp";
+import EquipmentComp from "../components/character-sheet/EquipmentComp";
+
 const ABILITIES = [
   { name: "strength", skills: ["athletics"] },
   { name: "dexterity", skills: ["acrobatics", "sleight of hand", "stealth"] },
@@ -87,6 +90,40 @@ function Character() {
       [type]: prev[type].map((v, i) => (i === index ? !v : v)),
     }));
 
+  // attack comp and equipment
+  const newAttack = () => ({
+    id: crypto.randomUUID(),
+    name: "",
+    ability: "strength",
+    proficient: true,
+    damage: "",
+  });
+
+  const [attacks, setAttacks] = useState([
+    newAttack(),
+    newAttack(),
+    newAttack(),
+  ]);
+  const [attackNotes, setAttackNotes] = useState("");
+  const [coins, setCoins] = useState({
+    cp: "",
+    sp: "",
+    ep: "",
+    gp: "",
+    pp: "",
+  });
+  const [equipment, setEquipment] = useState("");
+
+  const handleAttackChange = (id, field, value) =>
+    setAttacks((prev) =>
+      prev.map((a) => (a.id === id ? { ...a, [field]: value } : a)),
+    );
+  const handleAddAttack = () => setAttacks((prev) => [...prev, newAttack()]);
+  const handleRemoveAttack = (id) =>
+    setAttacks((prev) => prev.filter((a) => a.id !== id));
+  const handleCoinChange = (coin, value) =>
+    setCoins((prev) => ({ ...prev, [coin]: value }));
+
   return (
     <MainLayout
       headerTitle="hello Character"
@@ -162,13 +199,30 @@ function Character() {
           />
         ))}
       </section>
-      <section>
+      <section className="grid gap-2">
         <CombatStats
           combat={combat}
           onCombatChange={handleCombatChange}
           deathSaves={deathSaves}
           onDeathSaveToggle={handleDeathSaveToggle}
           dexterityScore={scores.dexterity}
+        />
+        <AttacksComp
+          attacks={attacks}
+          onAttackChange={handleAttackChange}
+          onAddAttack={handleAddAttack}
+          onRemoveAttack={handleRemoveAttack}
+          scores={scores}
+          proficiencyBonus={proficiencyBonus}
+          notes={attackNotes}
+          onNotesChange={setAttackNotes}
+          ABILITIES={ABILITIES}
+        />
+        <EquipmentComp
+          coins={coins}
+          onCoinChange={handleCoinChange}
+          list={equipment}
+          onListChange={setEquipment}
         />
       </section>
     </MainLayout>
