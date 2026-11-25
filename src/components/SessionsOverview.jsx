@@ -39,7 +39,7 @@ export default function SessionsOverview({ isResponsive }) {
           variant="small"
         />
       ))}
-      <Link className={`flex justify-end items-center gap-2 pt-3 ${isResponsive && "md:col-span-2 lg:col-span-3"}`} to={`/campaigns/${campaignSlug}/sessions`}>
+      <Link className={`flex justify-end items-center gap-2 pt-3 ${isResponsive && "md:col-span-2 lg:col-span-3"}`} to={`/campaigns/${currentCampaignSlug}/sessions`}>
         <p className="text-sm! text-accent-400">see all sessions</p>
         <img src={PurpleArrow} alt="arrow icon" className="w-4" />
       </Link>

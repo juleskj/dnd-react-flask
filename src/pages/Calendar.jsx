@@ -7,6 +7,8 @@ import "@fullcalendar/react/themes/monarch/theme.css";
 import "@fullcalendar/react/themes/monarch/palettes/purple.css";
 import ScheduleBackground from "../assets/schedule-bg.svg";
 import PlusSign from "../assets/plus-solid-full.svg";
+import { Link } from "react-router";
+
 function Calendar() {
   return (
     <MainLayout headerTitle="Calendar" color="teal">
@@ -20,10 +22,10 @@ function Calendar() {
               { title: "event 2", date: "2026-11-22" },
             ]}
           />
-          <button className="bg-accent-100 flex w-full sm:w-48 p-2 mt-3 justify-center text-accent-300">
+          <Link to="/campaigns" className="bg-accent-100 flex w-full sm:w-48 p-2 mt-3 justify-center text-accent-300">
             <p className="font-heading! text-md!">link to campaign</p>
             <img className="w-5" src={PlusSign} alt="plus sign" />
-          </button>
+          </Link>
         </div>
         <div className="h-200">
           <h2 className="text-center text-3xl! text-accent-300">Sessions</h2>
