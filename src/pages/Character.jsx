@@ -9,6 +9,7 @@ import CharacterInfo from "../components/character-sheet/CharacterInfo";
 import AttacksComp from "../components/character-sheet/AttacksComp";
 import EquipmentComp from "../components/character-sheet/EquipmentComp";
 import LinedTextarea from "../components/character-sheet/LinedTextarea";
+import AppearanceComp from "../components/character-sheet/AppearanceComp";
 
 const linedPaper = `
   leading-7 bg-transparent resize-none focus:outline-none
@@ -56,6 +57,15 @@ function Character() {
     xp: "",
   });
 
+  const [appearanceInfo, setAppearanceInfo] = useState({
+    age: "23",
+    height: "171",
+    weight: "89",
+    eyes: "brown",
+    skin: "pale",
+    hair: "light",
+  });
+
   const proficiencyBonus = getProficiencyBonus(level);
 
   const handleLevelChange = (e) => {
@@ -68,6 +78,9 @@ function Character() {
 
   const handleInfoChange = (name, value) =>
     setInfo((prev) => ({ ...prev, [name]: value }));
+
+  const handleAppearanceInfoChange = (name, value) =>
+    setAppearanceInfo((prev) => ({ ...prev, [name]: value }));
 
   const handleToggle = (key) =>
     setProficient((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -257,6 +270,12 @@ function Character() {
           value={flaws}
           setValue={setFlaws}
         ></LinedTextarea>
+      </section>
+      <section className="md:col-span-2 lg:col-span-2">
+        <CharacterInfo
+          info={appearanceInfo}
+          onInfoChange={handleAppearanceInfoChange}
+        />
       </section>
     </MainLayout>
   );

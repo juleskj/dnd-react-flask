@@ -28,96 +28,78 @@ function Field({ id, label, children }) {
 function CharacterInfo({ info, onInfoChange, level, onLevelChange }) {
   const handleChange = (e) => onInfoChange(e.target.name, e.target.value);
 
+  let newArr = Object.keys(info);
+
+  if (level) {
+    const keep = ["class", "background", "playerName", "race"];
+
+    newArr = keep.filter((n) => Object.keys(info).includes(n));
+    console.log(newArr);
+  }
+
   return (
     <section className="grid w-full max-w-3xl grid-cols-1 gap-x-8 gap-y-6 rounded-[10px] lg:p-6 sm:grid-cols-3">
       {/* Class & level */}
-      <Field id="class" label="Class & level">
-        <div className="flex gap-2">
+      {level && (
+        <>
+          <Field id="class" label="Experience points & level">
+            <div className="flex gap-2">
+              <input
+                id="xp"
+                name="xp"
+                type="text"
+                inputMode="numeric"
+                value={info.xp}
+                onChange={(e) =>
+                  onInfoChange("xp", e.target.value.replace(/\D/g, ""))
+                }
+                className={fieldInput}
+              />
+
+              <input
+                id="level"
+                name="level"
+                type="text"
+                inputMode="numeric"
+                maxLength={2}
+                aria-label="Level"
+                value={level}
+                onChange={onLevelChange}
+                className={`${fieldInput} w-14 text-center`}
+              />
+            </div>
+          </Field>
+          <Field id="alignment" label="Alignment">
+            <select
+              id="alignment"
+              name="alignment"
+              value={info.alignment}
+              onChange={handleChange}
+              className={fieldInput}
+            >
+              <option value="">Choose...</option>
+              {ALIGNMENTS.map((a) => (
+                <option key={a} value={a}>
+                  {a}
+                </option>
+              ))}
+            </select>
+          </Field>
+        </>
+      )}
+
+      {newArr.map((keyName, i) => (
+        <Field id={keyName} label={keyName} key={i}>
           <input
-            id="class"
-            name="class"
+            id={keyName}
+            name={keyName}
             type="text"
-            value={info.class}
+            value={info[keyName]}
             onChange={handleChange}
             className={fieldInput}
           />
-          <input
-            id="level"
-            name="level"
-            type="text"
-            inputMode="numeric"
-            maxLength={2}
-            aria-label="Level"
-            value={level}
-            onChange={onLevelChange}
-            className={`${fieldInput} w-14 text-center`}
-          />
-        </div>
-      </Field>
-
-      <Field id="background" label="Background">
-        <input
-          id="background"
-          name="background"
-          type="text"
-          value={info.background}
-          onChange={handleChange}
-          className={fieldInput}
-        />
-      </Field>
-
-      <Field id="playerName" label="Player name">
-        <input
-          id="playerName"
-          name="playerName"
-          type="text"
-          value={info.playerName}
-          onChange={handleChange}
-          className={fieldInput}
-        />
-      </Field>
-
-      <Field id="race" label="Race">
-        <input
-          id="race"
-          name="race"
-          type="text"
-          value={info.race}
-          onChange={handleChange}
-          className={fieldInput}
-        />
-      </Field>
-
-      <Field id="alignment" label="Alignment">
-        <select
-          id="alignment"
-          name="alignment"
-          value={info.alignment}
-          onChange={handleChange}
-          className={fieldInput}
-        >
-          <option value="">Choose...</option>
-          {ALIGNMENTS.map((a) => (
-            <option key={a} value={a}>
-              {a}
-            </option>
-          ))}
-        </select>
-      </Field>
-
-      <Field id="xp" label="Experience points">
-        <input
-          id="xp"
-          name="xp"
-          type="text"
-          inputMode="numeric"
-          value={info.xp}
-          onChange={(e) =>
-            onInfoChange("xp", e.target.value.replace(/\D/g, ""))
-          }
-          className={fieldInput}
-        />
-      </Field>
+        </Field>
+      ))}
     </section>
   );
 }
