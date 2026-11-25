@@ -16,7 +16,7 @@ function AbilityComp({
   const savingKey = `${ability}-saving-throw`;
 
   return (
-    <article className="flex flex-col items-center lg:items-start lg:grid lg:grid-cols-[auto_1fr] gap-4 pb-2.5">
+    <article className="flex flex-col items-center md:items-start md:grid md:grid-cols-[auto_1fr]  lg:items-start lg:grid lg:grid-cols-[auto_1fr] gap-4 pb-2.5">
       <label
         className="bg-light-100 mt-2.5 aspect-square w-35 h-35 flex flex-col border-2 border-main-300 text-center rounded-[10px]"
         htmlFor={`${shortAbility}-ability`}

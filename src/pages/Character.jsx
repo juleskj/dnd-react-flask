@@ -139,7 +139,7 @@ function Character() {
     <MainLayout
       headerTitle="hello Character"
       color="teal"
-      css=" flex flex-col lg:grid lg:grid-rows-[auto_auto] lg:grid-cols-[auto_auto_auto] gap-4 lg:p-4 lg:bg-main-100/60 lg:rounded-[10px] lg:*:bg-light-100 *:rounded-[10px]  *:bg-main-100/30 *:p-2   lg:*:border-2 lg:*:border-main-300 lg:*:p-2"
+      css=" flex flex-col lg:grid lg:grid-rows-[auto_auto] lg:grid-cols-[1fr_auto] gap-4 lg:p-4 lg:bg-main-100/60 lg:rounded-[10px] lg:*:bg-light-100 *:rounded-[10px]  *:bg-main-100/30 *:p-2   lg:*:border-2 lg:*:border-main-300 lg:*:p-2"
     >
       <div className=" lg:grid lg:grid-cols-2 col-span-3 py-4 lg:py-0">
         {/* character name */}
@@ -236,7 +236,7 @@ function Character() {
           onListChange={setEquipment}
         />
       </section>
-      <section className="grid gap-2">
+      <section className="grid  gap-2 md:grid-cols-2 md:col-span-2 lg:grid-cols-2 lg:col-span-2">
         <LinedTextarea
           label="personality trait"
           value={personalityTrait}
