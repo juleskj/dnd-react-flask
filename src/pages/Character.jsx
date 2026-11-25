@@ -8,6 +8,12 @@ import CharacterInfo from "../components/character-sheet/CharacterInfo";
 
 import AttacksComp from "../components/character-sheet/AttacksComp";
 import EquipmentComp from "../components/character-sheet/EquipmentComp";
+import LinedTextarea from "../components/character-sheet/LinedTextarea";
+
+const linedPaper = `
+  leading-7 bg-transparent resize-none focus:outline-none
+  bg-[repeating-linear-gradient(transparent,transparent_calc(1.75rem_-_1px),var(--color-main-200)_calc(1.75rem_-_1px),var(--color-main-200)_1.75rem)]
+`;
 
 const ABILITIES = [
   { name: "strength", skills: ["athletics"] },
@@ -113,6 +119,11 @@ function Character() {
     pp: "",
   });
   const [equipment, setEquipment] = useState("");
+
+  const [personalityTrait, setPersonalityTrait] = useState("");
+  const [ideals, setIdeals] = useState("");
+  const [bonds, setBonds] = useState("");
+  const [flaws, setFlaws] = useState("");
 
   const handleAttackChange = (id, field, value) =>
     setAttacks((prev) =>
@@ -224,6 +235,28 @@ function Character() {
           list={equipment}
           onListChange={setEquipment}
         />
+      </section>
+      <section className="grid gap-2">
+        <LinedTextarea
+          label="personality trait"
+          value={personalityTrait}
+          setValue={setPersonalityTrait}
+        ></LinedTextarea>
+        <LinedTextarea
+          label="bonds"
+          value={bonds}
+          setValue={setBonds}
+        ></LinedTextarea>
+        <LinedTextarea
+          label="ideals"
+          value={ideals}
+          setValue={setIdeals}
+        ></LinedTextarea>
+        <LinedTextarea
+          label="flaws"
+          value={flaws}
+          setValue={setFlaws}
+        ></LinedTextarea>
       </section>
     </MainLayout>
   );
