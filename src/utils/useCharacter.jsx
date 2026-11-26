@@ -46,8 +46,9 @@ const GROUPS = [
   "deathSaves",
 ];
 
-function loadCharacter() {
+function loadCharacter(slug) {
   const defaults = createCharacter();
+  if (slug) defaults.name = slug.replaceAll("-", " "); // ← new line
   try {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
     if (!saved) return defaults;
@@ -111,9 +112,8 @@ export const createCharacter = () => ({
 
 const STORAGE_KEY = "dnd-character";
 
-export function useCharacter() {
-  const [character, setCharacter] = useState(loadCharacter);
-
+export function useCharacter(slug) {
+  const [character, setCharacter] = useState(() => loadCharacter(slug));
   // autosave on every change
   const latest = useRef(character);
   latest.current = character;

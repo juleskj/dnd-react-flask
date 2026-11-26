@@ -2,17 +2,17 @@ import { Link } from "react-router";
 
 function WikiWorld({
   worldTitle,
-  slug,
   id,
+  to,
 }: {
   worldTitle: string;
-  slug: string;
   id?: string;
+  to: string;
 }) {
   return (
     <Link
       key={id}
-      to={`/wiki/${slug}`}
+      to={to}
       className="active:scale-[0.98] hover:scale-[1.02] duration-100 ease-in"
     >
       <article className="flex flex-row items-center justify-between  py-8 px-4 rounded-[10px] text-light-100 bg-main-400 w-full md:max-w-full ">

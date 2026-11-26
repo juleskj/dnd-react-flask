@@ -1,16 +1,19 @@
-import MainLayout from "../layouts/MainLayout";
-import AbilityComp from "../components/character-sheet/AbilityComp";
-import CombatStats from "../components/character-sheet/CombatStats";
-import CharacterInfo from "../components/character-sheet/CharacterInfo";
-import AttacksComp from "../components/character-sheet/AttacksComp";
-import EquipmentComp from "../components/character-sheet/EquipmentComp";
-import LinedTextarea from "../components/character-sheet/LinedTextarea";
+import MainLayout from "../../layouts/MainLayout";
+import AbilityComp from "../../components/character-sheet/AbilityComp";
+import CombatStats from "../../components/character-sheet/CombatStats";
+import CharacterInfo from "../../components/character-sheet/CharacterInfo";
+import AttacksComp from "../../components/character-sheet/AttacksComp";
+import EquipmentComp from "../../components/character-sheet/EquipmentComp";
+import LinedTextarea from "../../components/character-sheet/LinedTextarea";
+import fromSlug from "../../utils/FromSlug";
 
-import { ABILITIES, useCharacter } from "../utils/useCharacter";
+import { useParams } from "react-router";
+import { ABILITIES, useCharacter } from "../../utils/useCharacter";
 
-import { getProficiencyBonus, formatBonus } from "../utils/Cals";
+import { getProficiencyBonus, formatBonus } from "../../utils/Cals";
 
 function Character() {
+  const { slug } = useParams();
   const {
     character: c,
     setField,
@@ -20,7 +23,7 @@ function Character() {
     addAttack,
     changeAttack,
     removeAttack,
-  } = useCharacter();
+  } = useCharacter(slug);
 
   const proficiencyBonus = getProficiencyBonus(c.level);
 
@@ -30,7 +33,7 @@ function Character() {
   };
 
   return (
-    <MainLayout headerTitle=" Character sheet" color="teal" css="grid gap-2">
+    <MainLayout headerTitle={c.name} color="teal" css="grid gap-2">
       <section className=" flex flex-col lg:grid lg:grid-rows-[auto_auto] lg:grid-cols-[1fr_auto] gap-4 lg:p-4 lg:bg-main-100/60 lg:rounded-[10px] lg:*:bg-light-100 *:rounded-[10px]  *:bg-main-100/30 *:p-2   lg:*:border-2 lg:*:border-main-300 lg:*:p-2">
         <div className=" lg:grid lg:grid-cols-2 col-span-3 py-4 lg:py-0">
           {/* character name */}
