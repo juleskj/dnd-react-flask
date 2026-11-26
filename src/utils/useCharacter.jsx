@@ -82,6 +82,11 @@ export const createCharacter = () => ({
     alignment: "",
     xp: "",
   },
+  backstory: "",
+  alliesAndOrganizations: "",
+  features: "",
+  appearanceNotes: "",
+  treasure: "",
   appearance: { age: "", height: "", weight: "", eyes: "", skin: "", hair: "" },
   scores: Object.fromEntries(ABILITIES.map(({ name }) => [name, "10"])),
   proficient: {}, // e.g. { "strength-athletics": true }

@@ -30,7 +30,7 @@ function Character() {
   };
 
   return (
-    <MainLayout headerTitle="hello Character" color="teal" css="grid gap-2">
+    <MainLayout headerTitle=" Character sheet" color="teal" css="grid gap-2">
       <section className=" flex flex-col lg:grid lg:grid-rows-[auto_auto] lg:grid-cols-[1fr_auto] gap-4 lg:p-4 lg:bg-main-100/60 lg:rounded-[10px] lg:*:bg-light-100 *:rounded-[10px]  *:bg-main-100/30 *:p-2   lg:*:border-2 lg:*:border-main-300 lg:*:p-2">
         <div className=" lg:grid lg:grid-cols-2 col-span-3 py-4 lg:py-0">
           {/* character name */}
@@ -134,7 +134,7 @@ function Character() {
           />
         </section>
 
-        <section className="grid gap-2 md:grid-cols-2 md:col-span-2 lg:grid-cols-2 lg:col-span-2">
+        <artile className="grid gap-2 md:grid-cols-2 md:col-span-2 lg:grid-cols-2 lg:col-span-2">
           <LinedTextarea
             label="personality trait"
             value={c.personality.traits}
@@ -155,7 +155,7 @@ function Character() {
             value={c.personality.flaws}
             setValue={(v) => setIn("personality", "flaws", v)}
           />
-        </section>
+        </artile>
       </section>
 
       {/* appearance section*/}
@@ -166,6 +166,38 @@ function Character() {
             onInfoChange={(key, value) => setIn("appearance", key, value)}
           />
         </div>
+
+        <article className="grid gap-2 md:grid-cols-2 md:col-span-2 lg:grid-cols-2 lg:col-span-2">
+          <div className="grid grid-rows-2 items-stretch gap-2">
+            <LinedTextarea
+              label="backstory"
+              value={c.backstory}
+              setValue={(v) => setField("backstory", v)}
+            />
+            <LinedTextarea
+              label="Allies and Organizations"
+              value={c.alliesAndOrganizations}
+              setValue={(v) => setField("alliesAndOrganizations", v)}
+            />
+          </div>
+          <div className="flex flex-col gap-2">
+            <LinedTextarea
+              label="appearance notes"
+              value={c.appearanceNotes}
+              setValue={(v) => setField("appearanceNotes", v)}
+            />
+            <LinedTextarea
+              label="features"
+              value={c.features}
+              setValue={(v) => setField("features", v)}
+            />
+            <LinedTextarea
+              label="treasure"
+              value={c.treasure}
+              setValue={(v) => setField("treasure", v)}
+            />
+          </div>
+        </article>
       </section>
     </MainLayout>
   );

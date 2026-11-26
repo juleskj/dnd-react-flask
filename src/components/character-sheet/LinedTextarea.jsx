@@ -5,13 +5,13 @@ const linedPaper = `
 
 function LinedTextarea({ value, setValue, label }) {
   return (
-    <div className=" h-fit bg-light-100 flex w-full max-w-2xl flex-col overflow-hidden rounded-[10px] border-2 border-main-300">
+    <div className=" h-full bg-light-100 flex w-full max-w-2xl flex-col overflow-hidden rounded-[10px] border-2 border-main-300">
       <textarea
         aria-label={label}
         rows={12}
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        className={`${linedPaper} w-full bg-light-100! px-4 `}
+        className={`${linedPaper} w-full  bg-light-100! px-4 h-full `}
       />
 
       <span className="bg-main-100/60! py-1 text-center text-xs uppercase tracking-widest">
