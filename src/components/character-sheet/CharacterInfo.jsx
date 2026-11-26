@@ -10,6 +10,12 @@ const ALIGNMENTS = [
   "Chaotic Evil",
 ];
 
+// keys that need a nicer label than the raw key
+const LABELS = { playerName: "Player name" };
+
+// fields shown as plain inputs when the level/xp/alignment block is on
+const MAIN_FIELDS = ["class", "background", "playerName", "race"];
+
 const fieldInput =
   "w-full border-b-2 border-main-200 bg-transparent px-1 pb-1 text-lg " +
   "transition-colors focus:border-main-400 focus:outline-none";
@@ -28,21 +34,18 @@ function Field({ id, label, children }) {
 function CharacterInfo({ info, onInfoChange, level, onLevelChange }) {
   const handleChange = (e) => onInfoChange(e.target.name, e.target.value);
 
-  let newArr = Object.keys(info);
+  // level is "" while the user is typing, so test for undefined, not falsiness
+  const hasLevel = level !== undefined;
 
-  if (level) {
-    const keep = ["class", "background", "playerName", "race"];
-
-    newArr = keep.filter((n) => Object.keys(info).includes(n));
-    console.log(newArr);
-  }
+  const fields = hasLevel
+    ? MAIN_FIELDS.filter((key) => key in info)
+    : Object.keys(info);
 
   return (
-    <section className="grid w-full max-w-3xl grid-cols-1 gap-x-8 gap-y-6 rounded-[10px] lg:p-6 sm:grid-cols-3">
-      {/* Class & level */}
-      {level && (
+    <section className="grid w-full max-w-3xl grid-cols-1 gap-x-8 gap-y-6 rounded-[10px] sm:grid-cols-3 lg:p-6">
+      {hasLevel && (
         <>
-          <Field id="class" label="Experience points & level">
+          <Field id="xp" label="Experience points & level">
             <div className="flex gap-2">
               <input
                 id="xp"
@@ -55,7 +58,6 @@ function CharacterInfo({ info, onInfoChange, level, onLevelChange }) {
                 }
                 className={fieldInput}
               />
-
               <input
                 id="level"
                 name="level"
@@ -69,6 +71,7 @@ function CharacterInfo({ info, onInfoChange, level, onLevelChange }) {
               />
             </div>
           </Field>
+
           <Field id="alignment" label="Alignment">
             <select
               id="alignment"
@@ -88,13 +91,13 @@ function CharacterInfo({ info, onInfoChange, level, onLevelChange }) {
         </>
       )}
 
-      {newArr.map((keyName, i) => (
-        <Field id={keyName} label={keyName} key={i}>
+      {fields.map((key) => (
+        <Field id={key} label={LABELS[key] ?? key} key={key}>
           <input
-            id={keyName}
-            name={keyName}
+            id={key}
+            name={key}
             type="text"
-            value={info[keyName]}
+            value={info[key]}
             onChange={handleChange}
             className={fieldInput}
           />
