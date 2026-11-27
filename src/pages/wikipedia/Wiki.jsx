@@ -50,7 +50,7 @@ function Wiki() {
             key={world.id}
             id={world.id}
             worldTitle={world.worldTitle}
-            slug={world.slug}
+            to={`/Wiki/${world.slug}`}
           />
         ))}
       </section>

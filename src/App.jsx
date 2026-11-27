@@ -7,7 +7,8 @@ import WikiCreateEntry from "./pages/wikipedia/WikiCreateEntry";
 
 import Campaigns from "./pages/campaigns/CampaignsView";
 import Calendar from "./pages/Calendar";
-import Character from "./pages/Character";
+import Character from "./pages/characterSheet/Character";
+import CharacterEntry from "./pages/characterSheet/CharacterEntry";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -32,6 +33,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/calendar" element={<Calendar />} />
       <Route path="/character" element={<Character />} />
+      <Route path="/character/:slug" element={<CharacterEntry />} />
 
       {/* sing up and login pages */}
       <Route path="/login" element={<Login />} />
@@ -44,8 +46,14 @@ function App() {
       <Route path="/campaigns" element={<Campaigns />} />
       <Route path="/campaigns/:slug" element={<SingleCampaign />} />
       <Route path="/campaigns/:slug/sessions" element={<SessionsView />} />
-      <Route path="/campaigns/:slug/sessions/new-session" element={<NewSession />} />
-      <Route path="/campaigns/:campaignSlug/sessions/:sessionSlug" element={<SessionEntry />} />
+      <Route
+        path="/campaigns/:slug/sessions/new-session"
+        element={<NewSession />}
+      />
+      <Route
+        path="/campaigns/:campaignSlug/sessions/:sessionSlug"
+        element={<SessionEntry />}
+      />
       <Route path="/calendar" element={<Calendar />} />
       <Route path="/character" element={<Character />} />
     </Routes>
