@@ -15,6 +15,7 @@ import { ABILITIES, useCharacter } from "../../utils/useCharacter";
 import { getProficiencyBonus, formatBonus } from "../../utils/Cals";
 
 import YouDied from "../../components/character-sheet/YouDied";
+import Stabilized from "../../components/character-sheet/Stabilized";
 
 function Character() {
   const { slug } = useParams();
@@ -36,6 +37,7 @@ function Character() {
   } = useCharacter(slug);
 
   const isDead = c.deathSaves.failures.every(Boolean);
+  const isStable = !isDead && c.deathSaves.successes.every(Boolean);
 
   const proficiencyBonus = getProficiencyBonus(c.level);
 
@@ -233,6 +235,7 @@ function Character() {
       </section>
 
       {isDead && <YouDied />}
+      {isStable && <Stabilized />}
     </MainLayout>
   );
 }
