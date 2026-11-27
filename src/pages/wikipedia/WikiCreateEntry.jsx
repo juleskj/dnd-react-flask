@@ -55,20 +55,13 @@ function WikiCreateEntry() {
   }
 
   return (
-    <MainLayout
-      headerTitle="New content"
-      color="teal"
-      css="lg:grid lg:grid-cols-2 lg:items-start lg:gap-16 md:gap-8 "
-    >
+    <MainLayout headerTitle="New content" color="teal" css="lg:grid lg:grid-cols-2 lg:items-start lg:gap-16 md:gap-8 ">
       <section className="flex flex-col gap-6 *:bg-main-100/20 *:p-2 *:m-0 *:rounded-[10px] items-stretch [&_p]:max-w-[65ch]  relative mb-8 mb:mb-0 lg:mb-0">
         <Breadcrumb></Breadcrumb>
-        <AddWikiCategori
-          categori={entry.categori}
-          onChange={(categori) => updateField("categori", categori)}
-        />
+        <AddWikiCategori categori={entry.categori} onChange={(categori) => updateField("categori", categori)} />
         <InputField
           type="text"
-          placeholder="give your creatating a title"
+          placeholder="create a title"
           iDhtmlFor="entry-title"
           inputName="entry_title"
           labelText=" Entry title"
@@ -78,36 +71,17 @@ function WikiCreateEntry() {
           onChange={(e) => updateField("entry_title", e.target.value)}
         ></InputField>
 
-        <AddWikiBlock
-          blocks={entry.blocks}
-          onChange={(blocks) => updateField("blocks", blocks)}
-          imageFiles={imageFiles}
-          setImageFiles={setImageFiles}
-        ></AddWikiBlock>
+        <AddWikiBlock blocks={entry.blocks} onChange={(blocks) => updateField("blocks", blocks)} imageFiles={imageFiles} setImageFiles={setImageFiles}></AddWikiBlock>
 
-        <EntryDetailList
-          editing={true}
-          details={entry.details}
-          onChange={(details) => updateField("details", details)}
-        ></EntryDetailList>
+        <EntryDetailList editing={true} details={entry.details} onChange={(details) => updateField("details", details)}></EntryDetailList>
       </section>
 
-      <section
-        className={`sticky [transition:transform_0.3s_ease-in,0.3s_linear]  ${scrollDirection === "down" ? "top-5" : "top-25"}`}
-      >
-        <ContextLinkWrapper
-          worldSlug={worldSlug}
-          links={entry.links}
-          onChange={(links) => updateField("links", links)}
-        />
+      <section className={`sticky [transition:transform_0.3s_ease-in,0.3s_linear]  ${scrollDirection === "down" ? "top-5" : "top-25"}`}>
+        <ContextLinkWrapper worldSlug={worldSlug} links={entry.links} onChange={(links) => updateField("links", links)} />
       </section>
       {/* see the preview of whats getting saved */}
       {/* <pre className="text-xs">{JSON.stringify({ ...entry }, null, 2)}</pre> */}
-      <Button
-        buttonText="save entry"
-        type="button"
-        onClick={handleSave}
-      ></Button>
+      <Button buttonText="save entry" type="button" onClick={handleSave}></Button>
     </MainLayout>
   );
 }

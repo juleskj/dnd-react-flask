@@ -60,7 +60,7 @@ function SessionsView() {
   }
 
   return (
-    <MainLayout headerTitle="Sessions" color="teal">
+    <MainLayout headerTitle="Sessions" color="purple">
       <Breadcrumb />
       <Link className="flex justify-center" to="new-session">
         <AddButton btnText="plan new session" />

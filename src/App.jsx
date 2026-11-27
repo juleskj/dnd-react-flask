@@ -18,6 +18,8 @@ import SessionEntry from "./pages/sessions/SessionEntry";
 import SessionsView from "./pages/sessions/SessionsView";
 import "./App.css";
 import NewSession from "./pages/sessions/NewSession";
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminPage from "./pages/admin/AdminPage";
 
 function App() {
   return (
@@ -48,6 +50,10 @@ function App() {
       <Route path="/campaigns/:campaignSlug/sessions/:sessionSlug" element={<SessionEntry />} />
       <Route path="/calendar" element={<Calendar />} />
       <Route path="/character" element={<Character />} />
+
+      {/* admin login */}
+      <Route path="/admin/login" element={<AdminLogin />} />
+      <Route path="/admin" element={<AdminPage />} />
     </Routes>
   );
 }

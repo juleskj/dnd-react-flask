@@ -11,7 +11,7 @@ import { Link } from "react-router";
 
 function Calendar() {
   return (
-    <MainLayout headerTitle="Calendar" color="teal">
+    <MainLayout headerTitle="Calendar" color="purple">
       <section className="grid md:grid-cols-2 gap-20 items-start">
         <div className="mt-10">
           <FullCalendar

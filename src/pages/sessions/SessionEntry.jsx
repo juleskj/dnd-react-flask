@@ -7,12 +7,10 @@ import EditButton from "../../components/EditButton";
 import SessionsOverview from "../../components/SessionsOverview";
 
 function SessionEntry() {
-  const { slug } = useParams();
-
-  const sessionSlug = slug ?? "";
+  const { sessionSlug } = useParams();
 
   return (
-    <MainLayout headerTitle={fromSlug(sessionSlug)} color="teal">
+    <MainLayout headerTitle={fromSlug(sessionSlug)} color="purple">
       <Breadcrumb />
       <section className="grid gap-6 border-solid border-2 rounded-lg p-6">
         <header className="flex justify-between">

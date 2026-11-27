@@ -31,11 +31,7 @@ export default function InputField({
       <label htmlFor={iDhtmlFor} className={`${colors[color].text} text-xl!`}>
         {labelText}
       </label>
-      {inputRequirements && (
-        <p className={`${colors[color].requirments} text-sm!`}>
-          {inputRequirements}
-        </p>
-      )}
+      {inputRequirements && <p className={`${colors[color].requirments} text-sm!`}>{inputRequirements}</p>}
       <input
         type={type}
         id={iDhtmlFor}
@@ -47,7 +43,7 @@ export default function InputField({
         onChange={onChange}
         value={value}
         placeholder={placeholder}
-        className={`h-10 bg-light-100 w-full rounded-3xl border-2 ${colors[color].border} text-main-400 p-3`}
+        className={`h-10 bg-light-100 w-full rounded-3xl border-2 ${colors[color].border} text-black p-3`}
       />
     </div>
   );

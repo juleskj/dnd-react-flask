@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 
 function MainLayout({ children, headerTitle, color = "purple", css }: { children: ReactNode; headerTitle?: string; color?: "purple" | "teal"; css?: string }) {
   const colors = {
-    purple: "bg-accent-300",
+    purple: "bg-accent-100 text-accent-300!",
     teal: "bg-main-300",
   };
 
@@ -12,10 +12,10 @@ function MainLayout({ children, headerTitle, color = "purple", css }: { children
     <>
       <NavigationWrapper></NavigationWrapper>
 
-      <div id="main-content" className="my-8">
+      <main id="main-content" className="my-8">
         {headerTitle && <h1 className={` ${colors[color]} w-full  text-center text-light-100 p-4 first-letter:capitalize`}>{headerTitle}</h1>}
         <section className={`${css} h-[100wh] my-4 mx-4 lg:mx-32 lg:my-8 `}>{children}</section>
-      </div>
+      </main>
       <Footer></Footer>
     </>
   );
