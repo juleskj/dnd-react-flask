@@ -29,7 +29,7 @@ function Campaigns() {
   function addCampaign(title) {
     const newCampaign = {
       id: crypto.randomUUID(),
-      campaignName: title,
+      worldTitle: title,
       slug: title.toLowerCase().replace(/\s+/g, "-"),
     };
     // later save to local storage
@@ -40,7 +40,12 @@ function Campaigns() {
       <AddWikiBtn btnText="Create new campaign" onAdd={addCampaign} />
       <section className="grid md:grid-cols-2 gap-y-4 gap-x-8 my-8">
         {campaigns.map((campaign) => (
-          <CampaignCard key={campaign.id} id={campaign.id} campaignName={campaign.worldTitle} slug={campaign.slug} />
+          <CampaignCard
+            key={campaign.id}
+            id={campaign.id}
+            campaignName={campaign.worldTitle}
+            slug={campaign.slug}
+          />
         ))}
       </section>
     </MainLayout>

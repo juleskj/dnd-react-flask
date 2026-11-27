@@ -41,6 +41,12 @@ td {
   @apply text-base font-sans  tv:text-3xl!;
 }
 
+.checkboxBase {
+  @apply shrink-0 cursor-pointer appearance-none border-2 border-main-300 bg-light-100
+  checked:bg-main-300 checked:shadow-[inset_0_0_0_2px_white]
+  focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-main-300;
+}
+
 @theme {
   --breakpoint-3xl: 1440px;
   --breakpoint-tv: 2560px;
@@ -154,4 +160,53 @@ header {
 #main-content {
   /* the orange-outlined div */
   flex: 1; /* takes all remaining space */
+}
+
+@theme {
+  --animate-death-fade: death-fade 2s ease-out forwards;
+  --animate-death-title: death-title 4s ease-out 0.8s both;
+
+  @keyframes death-fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes death-title {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  --animate-confetti-fall: confetti-fall 4s linear infinite;
+  --animate-success-pop: success-pop 0.9s cubic-bezier(0.2, 1.4, 0.4, 1) 0.4s
+    both;
+
+  @keyframes confetti-fall {
+    from {
+      transform: translate3d(0, -10vh, 0) rotate(0deg);
+    }
+    to {
+      transform: translate3d(var(--drift, 0px), 110vh, 0) rotate(720deg);
+    }
+  }
+
+  @keyframes success-pop {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
 }
