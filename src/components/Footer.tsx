@@ -11,19 +11,33 @@ const colorSchemes = {
   },
 } as const;
 
-export default function Footer({ colorScheme = "light" }: { colorScheme?: keyof typeof colorSchemes }) {
+export default function Footer({
+  colorScheme = "light",
+}: {
+  colorScheme?: keyof typeof colorSchemes;
+}) {
   return (
-    <footer className={`${colorSchemes[colorScheme].backGround} relative w-full items-start p-4 rounded-xl overflow-hidden`}>
-      <div className="flex justify-start items-start md:justify-around gap-2">
+    <footer
+      className={`${colorSchemes[colorScheme].backGround} relative m-4 mt-0 items-start p-4  rounded-xl overflow-hidden`}
+    >
+      <div className="flex justify-start items-start md:justify-around gap-2 ">
         <img src={DnDPlannerText} alt="Wizard" className="w-40 sm:w-md" />
         <div className="grid gap-4">
           <div className="bg-light-100 w-64 h-64 rounded-full grid self-start -mt-12 gap-14">
-            <img src={wizardSVG} alt="Wizard" className="mx-auto self-center w-2/3" />
+            <img
+              src={wizardSVG}
+              alt="Wizard"
+              className="mx-auto self-center w-2/3"
+            />
           </div>
-          <button className="w-full bg-main-100 text-main-400 h-10 rounded-3xl m-auto cursor-pointer hidden sm:block">Logout</button>
+          <button className="w-full bg-main-100 text-main-400 h-10 rounded-3xl m-auto cursor-pointer hidden sm:block">
+            Logout
+          </button>
         </div>
       </div>
-      <button className="min-w-80 max-w-96 bg-main-100 text-main-400 h-10 rounded-3xl m-auto cursor-pointer sm:hidden mt-6">Logout</button>
+      <button className="min-w-80 max-w-96 bg-main-100 text-main-400 h-10 rounded-3xl m-auto cursor-pointer sm:hidden mt-6">
+        Logout
+      </button>
     </footer>
   );
 }
