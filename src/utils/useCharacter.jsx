@@ -36,6 +36,19 @@ export const newAttack = () => ({
   damage: "",
 });
 
+export const newCantrip = () => ({
+  id: makeId(),
+  name: "",
+});
+
+export const newSpell = (level = 1) => ({
+  id: makeId(),
+  name: "",
+  level, //  1-9
+  prepared: false,
+  notes: "",
+});
+
 const GROUPS = [
   "info",
   "appearance",
@@ -44,6 +57,7 @@ const GROUPS = [
   "coins",
   "personality",
   "deathSaves",
+  "spellcasting",
 ];
 
 function loadCharacter(slug) {
@@ -108,6 +122,12 @@ export const createCharacter = () => ({
   coins: { cp: "", sp: "", ep: "", gp: "", pp: "" },
   equipment: "",
   personality: { traits: "", ideals: "", bonds: "", flaws: "" },
+  cantrips: [newCantrip(), newCantrip(), newCantrip()],
+
+  spellcasting: {
+    ability: "intelligence",
+    spells: [newSpell(), newSpell()],
+  },
 });
 
 const STORAGE_KEY = "dnd-character";
@@ -169,11 +189,25 @@ export function useCharacter(slug) {
       attacks: [...prev.attacks, newAttack()],
     }));
 
+  const addCantrip = () =>
+    setCharacter((prev) => ({
+      ...prev,
+      cantrips: [...prev.cantrips, newCantrip()],
+    }));
+
   const changeAttack = (id, field, value) =>
     setCharacter((prev) => ({
       ...prev,
       attacks: prev.attacks.map((a) =>
         a.id === id ? { ...a, [field]: value } : a,
+      ),
+    }));
+
+  const changeCantrip = (id, field, value) =>
+    setCharacter((prev) => ({
+      ...prev,
+      cantrips: prev.cantrips.map((c) =>
+        c.id === id ? { ...c, [field]: value } : c,
       ),
     }));
 
@@ -183,6 +217,41 @@ export function useCharacter(slug) {
       attacks: prev.attacks.filter((a) => a.id !== id),
     }));
 
+  const removeCantrip = (id) =>
+    setCharacter((prev) => ({
+      ...prev,
+      cantrips: prev.cantrips.filter((c) => c.id !== id),
+    }));
+
+  const addSpell = (level = 0) =>
+    setCharacter((prev) => ({
+      ...prev,
+      spellcasting: {
+        ...prev.spellcasting,
+        spells: [...prev.spellcasting.spells, newSpell(level)],
+      },
+    }));
+
+  const changeSpell = (id, field, value) =>
+    setCharacter((prev) => ({
+      ...prev,
+      spellcasting: {
+        ...prev.spellcasting,
+        spells: prev.spellcasting.spells.map((s) =>
+          s.id === id ? { ...s, [field]: value } : s,
+        ),
+      },
+    }));
+
+  const removeSpell = (id) =>
+    setCharacter((prev) => ({
+      ...prev,
+      spellcasting: {
+        ...prev.spellcasting,
+        spells: prev.spellcasting.spells.filter((s) => s.id !== id),
+      },
+    }));
+
   return {
     character,
     setField,
@@ -190,7 +259,13 @@ export function useCharacter(slug) {
     toggleIn,
     toggleDeathSave,
     addAttack,
+    addCantrip,
     changeAttack,
     removeAttack,
+    changeCantrip,
+    removeCantrip,
+    addSpell,
+    changeSpell,
+    removeSpell,
   };
 }

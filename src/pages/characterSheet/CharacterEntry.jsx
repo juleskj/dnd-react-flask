@@ -5,12 +5,16 @@ import CharacterInfo from "../../components/character-sheet/CharacterInfo";
 import AttacksComp from "../../components/character-sheet/AttacksComp";
 import EquipmentComp from "../../components/character-sheet/EquipmentComp";
 import LinedTextarea from "../../components/character-sheet/LinedTextarea";
-import fromSlug from "../../utils/FromSlug";
+
+import CantripsComp from "../../components/character-sheet/CantripsComp";
+import SpellsComp from "../../components/character-sheet/SpellsComp";
 
 import { useParams } from "react-router";
 import { ABILITIES, useCharacter } from "../../utils/useCharacter";
 
 import { getProficiencyBonus, formatBonus } from "../../utils/Cals";
+
+import YouDied from "../../components/character-sheet/YouDied";
 
 function Character() {
   const { slug } = useParams();
@@ -23,7 +27,15 @@ function Character() {
     addAttack,
     changeAttack,
     removeAttack,
+    addCantrip,
+    changeCantrip,
+    removeCantrip,
+    addSpell,
+    changeSpell,
+    removeSpell,
   } = useCharacter(slug);
+
+  const isDead = c.deathSaves.failures.every(Boolean);
 
   const proficiencyBonus = getProficiencyBonus(c.level);
 
@@ -202,6 +214,25 @@ function Character() {
           </div>
         </article>
       </section>
+      <section className="flex flex-col lg:grid lg:grid-rows-auto lg:grid-cols-2 gap-4 lg:p-4 lg:bg-main-100/60 lg:rounded-[10px] lg:*:bg-light-100 *:rounded-[10px]  *:bg-main-100/30 *:p-2   lg:*:border-2 lg:*:border-main-300 lg:*:p-2 ">
+        <article className="grid gap-2 md:grid-cols-2 md:col-span-2 lg:grid-cols-2 lg:col-span-2">
+          <CantripsComp
+            cantrips={c.cantrips}
+            onChangeCantrip={changeCantrip}
+            onRemoveCantrip={removeCantrip}
+            onAddCantrip={addCantrip}
+          ></CantripsComp>
+
+          <SpellsComp
+            spellcasting={c.spellcasting}
+            onChangeSpell={changeSpell}
+            onRemoveSpell={removeSpell}
+            onAddSpell={addSpell}
+          ></SpellsComp>
+        </article>
+      </section>
+
+      {isDead && <YouDied />}
     </MainLayout>
   );
 }

@@ -5,7 +5,7 @@ import toSlug from "../../utils/ToSlug";
 import AddWikiBtn from "../../components/wiki/AddWikiBtn";
 
 function Character() {
-  const DRAFT_Character = [
+  const DRAFT_CHARACTER = [
     {
       id: "1",
       characterName: "alex",
@@ -24,7 +24,7 @@ function Character() {
     { id: "4", characterName: "cactus", slug: toSlug("cactus") },
   ];
 
-  const [Character, setCharacter] = useState(DRAFT_Character);
+  const [Character, setCharacter] = useState(DRAFT_CHARACTER);
 
   function addCampaign(title) {
     const newCampaign = {

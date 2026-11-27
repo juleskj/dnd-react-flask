@@ -97,7 +97,7 @@ function AttacksComp({
                 type="button"
                 aria-label="Remove attack"
                 onClick={() => onRemoveAttack(attack.id)}
-                className="cursor-pointer text-main-300 hover:text-black"
+                className="cursor-pointer text-main-300 hover:text-dark-100"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
                   <path
